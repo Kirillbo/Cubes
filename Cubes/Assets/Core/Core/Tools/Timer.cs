@@ -24,7 +24,7 @@ using UnityEngine;
         public static Timer Add(float finishTime, Action method, bool repeat = false)
         {
             var timer = new Timer(finishTime, method, repeat);
-            GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Add(timer);
+           // GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Add(timer);
             return timer;
         }
 
@@ -50,18 +50,18 @@ using UnityEngine;
 
         public void Stop()
         {
-            GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Remove(this);
+          //  GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Remove(this);
         }
 
         public void Play()
         {
-            GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Add(this);
+            //GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Add(this);
         }
 
 
     public void Kill()
     {
-        GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Remove(this);
+        //GameManager.Instance.GlobalSystem.Get<ProcessingTimer>().Remove(this);
         _callback = null;
     }
 

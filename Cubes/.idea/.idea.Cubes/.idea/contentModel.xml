@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\vorobev_k\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_Cubes.-992595600.00" t="ExcludeRecursive" />
+    <e p="C:\Users\vorobev_k\Desktop\Cubes\Cubes" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Core" t="Include">
+          <e p="Core" t="Include">
+            <e p="AState.cs" t="Include" />
+            <e p="BaseUI.cs" t="Include" />
+            <e p="DecorateFoldout" t="Include">
+              <e p="Attributes" t="Include">
+                <e p="FoldAttribute.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="EditorOverride.cs" t="Include" />
+              </e>
+            </e>
+            <e p="GameManager.cs" t="Include" />
+            <e p="Pool" t="Include">
+              <e p="IComponent.cs" t="Include" />
+              <e p="IPoollable.cs" t="Include" />
+              <e p="Pool.cs" t="Include" />
+              <e p="PoolManager.cs" t="Include" />
+            </e>
+            <e p="SystemProcessings" t="Include">
+              <e p="BaseSystems.cs" t="Include" />
+              <e p="DefaultProcessing" t="Include">
+                <e p="EventManager.cs" t="Include" />
+                <e p="ProcessingTimer.cs" t="Include" />
+              </e>
+              <e p="IAwake.cs" t="Include" />
+              <e p="IFixTIck.cs" t="Include" />
+              <e p="IReceive.cs" t="Include" />
+              <e p="ITick.cs" t="Include" />
+              <e p="SystemProcessings.cs" t="Include" />
+              <e p="UIBaseSystem.cs" t="Include" />
+            </e>
+            <e p="Tools" t="Include">
+              <e p="ButtonHandler.cs" t="Include" />
+              <e p="CamResizer.cs" t="Include" />
+              <e p="ManagerView.cs" t="Include" />
+              <e p="RangeInt.cs" t="Include" />
+              <e p="Singleton.cs" t="Include" />
+              <e p="SingltoonBehavior.cs" t="Include" />
+              <e p="Timer.cs" t="Include" />
+              <e p="Tools.cs" t="Include" />
+              <e p="ToolsMove.cs" t="Include" />
+              <e p="ViewUtils.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ecs-develop" t="Include">
+            <e p="src" t="Include">
+              <e p="EcsComponentMask.cs" t="Include" />
+              <e p="EcsComponentPool.cs" t="Include" />
+              <e p="EcsFilter.cs" t="Include" />
+              <e p="EcsHelpers.cs" t="Include" />
+              <e p="EcsInjections.cs" t="Include" />
+              <e p="EcsSystems.cs" t="Include" />
+              <e p="EcsWorld.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ecs-unityintegration-develop" t="Include">
+            <e p="Editor" t="Include">
+              <e p="EcsEntity.cs" t="Include" />
+              <e p="EcsSystems.cs" t="Include" />
+              <e p="EcsWorld.cs" t="Include" />
+              <e p="Inspectors" t="Include">
+                <e p="Quaternion.cs" t="Include" />
+                <e p="Vector3.cs" t="Include" />
+              </e>
+              <e p="Templates" t="Include">
+                <e p="Component.cs.txt" t="Include" />
+                <e p="ComponentFlag.cs.txt" t="Include" />
+                <e p="ComponentOneFrame.cs.txt" t="Include" />
+                <e p="InitSystem.cs.txt" t="Include" />
+                <e p="RunSystem.cs.txt" t="Include" />
+                <e p="Startup.cs.txt" t="Include" />
+                <e p="TemplateGenerator.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="EditorHelpers.cs" t="Include" />
+            </e>
+          </e>
+          <e p="States" t="Include">
+            <e p="GameProcess.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Componentns" t="Include">
+            <e p="EventClickButton.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Cubes.sln" t="IncludeFlat" />
+      <e p="Leopotam.Ecs.csproj" t="IncludeRecursive" />
+      <e p="Leopotam.Ecs.UnityIntegration.csproj" t="IncludeRecursive" />
+      <e p="Leopotam.Ecs.UnityIntegration.Editor.csproj" t="IncludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

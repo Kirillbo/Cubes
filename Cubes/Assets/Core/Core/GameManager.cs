@@ -24,12 +24,13 @@ public class GameManager : SingltoonBehavior<GameManager>
     protected override void Awake()
     {
         base.Awake();
-
     }
 
     private void Start()
     {
        EcsWorld = new EcsWorld();
+       EcsWorld.CreateEntity();
+        
        InitAllStates(States);
         
         Timer.Add(0.1f, ()=> InstanceState("StateGame"));
