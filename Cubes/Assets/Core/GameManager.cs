@@ -29,11 +29,16 @@ public class GameManager : SingltoonBehavior<GameManager>
     private void Start()
     {
        EcsWorld = new EcsWorld();
+
+#if UNITY_EDITOR
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(EcsWorld);
+
+#endif
        EcsWorld.CreateEntity();
         
        InitAllStates(States);
         
-        Timer.Add(0.1f, ()=> InstanceState("StateGame"));
+        Timer.Add(1f, ()=> InstanceState("GameProcess"));
         //Timer.Add(0.1f, ()=> InstanceState("Start"));
      }
 

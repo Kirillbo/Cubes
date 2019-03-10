@@ -274,7 +274,7 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
 public enum PoolType
 {
-   Fruit,
-    Hand,
-    Effect
+   Player,
+   Enemny
+    
 }

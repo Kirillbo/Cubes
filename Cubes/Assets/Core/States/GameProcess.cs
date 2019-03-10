@@ -11,6 +11,12 @@ public class GameProcess : AState
     public override void Init()
     {
        System = new EcsSystems(Manager.EcsWorld);
+
+#if UNITY_EDITOR
+        Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(System);
+#endif
+
+        //System.Add()
     }
 
     public override void Enter()
