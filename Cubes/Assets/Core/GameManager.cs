@@ -10,7 +10,9 @@ using UnityEngine;
 public class GameManager : SingltoonBehavior<GameManager>
 {
 
-       
+    public InitialiseManager InitialiseManager;
+    public Transform RespawnPos;
+    
     [Header("OpenFields")]
     public AState[] States;
     public Dictionary<string, AState> StateDictionary;
@@ -28,18 +30,13 @@ public class GameManager : SingltoonBehavior<GameManager>
 
     private void Start()
     {
+       InitialiseManager.CreatAllPools();
        EcsWorld = new EcsWorld();
-
-#if UNITY_EDITOR
-        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(EcsWorld);
-
-#endif
        EcsWorld.CreateEntity();
-        
-       InitAllStates(States);
-        
-        Timer.Add(1f, ()=> InstanceState("GameProcess"));
-        //Timer.Add(0.1f, ()=> InstanceState("Start"));
+
+        InitAllStates(States);
+        Invoke("GameStartt", 1f);
+        //Timer.Add(1f, ()=> InstanceState("GameProcess"));
      }
 
     void InitAllStates(AState[] states)
@@ -47,15 +44,23 @@ public class GameManager : SingltoonBehavior<GameManager>
         StateDictionary = new Dictionary<string, AState>();
         StateDictionary.Clear();
         
-        foreach (var state in States)
+        foreach (var state in states)
         {
             state.Manager = this;
             state.Init();
             StateDictionary.Add(state.GetName(), state);
         }
 
+#if UNITY_EDITOR
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(EcsWorld);
+#endif
+        
     }
-    
+
+    void GameStartt()
+    {
+        InstanceState("GameProcess");
+    }
     
     public AState GetCurrentState()
     {

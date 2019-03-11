@@ -9,9 +9,8 @@ public class InitialiseManager : MonoBehaviour
     public GameObject EnemyPrefab;
 
 	// Use this for initialization
-	void Start ()
+	public void CreatAllPools ()
 	{
-
 	    PoolManager.Instance.CreatePool(PoolType.Player, 1, PlayerPrefab);
 	}
 	

@@ -16,12 +16,14 @@ public class GameProcess : AState
         Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(System);
 #endif
 
-        //System.Add()
+        System.Add(new InitialPlayer()).
+            Add(new MoveSystem());
+        System.Initialize();
     }
 
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+      //  throw new System.NotImplementedException();
     }
 
     public override void Exit()
@@ -31,7 +33,7 @@ public class GameProcess : AState
 
     public override void Tick()
     {
-        throw new System.NotImplementedException();
+        System.Run();
     }
 
     public override void Clear()
