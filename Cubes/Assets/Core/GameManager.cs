@@ -12,6 +12,7 @@ public class GameManager : SingltoonBehavior<GameManager>
 
     public InitialiseManager InitialiseManager;
     public Transform RespawnPos;
+    public float EdgeScreen;
     
     [Header("OpenFields")]
     public AState[] States;
@@ -22,7 +23,12 @@ public class GameManager : SingltoonBehavior<GameManager>
     private AState _activeState;
 
     public EcsWorld EcsWorld;
-    
+    public float SpeedPlayer;
+    public float SpeedEnemies;
+
+    public Sprite SpriteRedEnemy;
+    public Sprite SpriteBlueEnemy;
+
     protected override void Awake()
     {
         base.Awake();
@@ -30,7 +36,7 @@ public class GameManager : SingltoonBehavior<GameManager>
 
     private void Start()
     {
-       InitialiseManager.CreatAllPools();
+       InitialiseManager.CreateAllPools();
        EcsWorld = new EcsWorld();
        EcsWorld.CreateEntity();
 

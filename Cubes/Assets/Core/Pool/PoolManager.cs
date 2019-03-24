@@ -44,40 +44,40 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         Debug.Log(id + " pool already exist");
     }
     
-    public T AddComponent<T>() where T : IComponent,  new()
-    {
-        var key = typeof(T).GetHashCode();
-        
-        if (!_dictComponent.ContainsKey(key))
-        {
-            var needObj = new T();
-            _dictComponent.Add(key, needObj);
-            return needObj;
-        }
-        
-        Debug.Log(typeof(T) + " this component is Update");
-        
-        var obj = new T();
-        _dictComponent.Remove(key);
-        _dictComponent.Add(key, obj);
-        return obj;
-    }
+//    public T AddComponent<T>() where T : IComponent,  new()
+//    {
+//        var key = typeof(T).GetHashCode();
+//        
+//        if (!_dictComponent.ContainsKey(key))
+//        {
+//            var needObj = new T();
+//            _dictComponent.Add(key, needObj);
+//            return needObj;
+//        }
+//        
+//        Debug.Log(typeof(T) + " this component is Update");
+//        
+//        var obj = new T();
+//        _dictComponent.Remove(key);
+//        _dictComponent.Add(key, obj);
+//        return obj;
+//    }
 
 
-    public IComponent AddComponent(IComponent component)
-    {
-        var key = component.GetType().GetHashCode();
-        
-        if (!_dictComponent.ContainsKey(key))
-        {
-            _dictComponent.Add(key, component);
-            return component;
-        }
-        
-        Debug.Log(component.GetType() + " this component is registered");
-        return _dictComponent[key];
-
-    }
+//    public IComponent AddComponent(IComponent component)
+//    {
+//        var key = component.GetType().GetHashCode();
+//        
+//        if (!_dictComponent.ContainsKey(key))
+//        {
+//            _dictComponent.Add(key, component);
+//            return component;
+//        }
+//        
+//        Debug.Log(component.GetType() + " this component is registered");
+//        return _dictComponent[key];
+//
+//    }
     
 //    public void AddComponent(object component)
 //    {
@@ -88,7 +88,7 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
     
     
-    //Get gameObjects 
+    //Get gameObject
     public GameObject Get(PoolType id)
     {
         Pool pool;
@@ -102,14 +102,16 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         return null;
     }
 
-    public void RemoveComponent<T>()
-    {
-        var key = typeof(T).GetHashCode();
-        if (_dictComponent.ContainsKey(key))
-        {
-            _dictComponent.Remove(key);
-        }
-    } 
+ 
+    
+//    public void RemoveComponent<T>()
+//    {
+//        var key = typeof(T).GetHashCode();
+//        if (_dictComponent.ContainsKey(key))
+//        {
+//            _dictComponent.Remove(key);
+//        }
+//    } 
     
     //Get components
     public T Get<T>() where T : class, IComponent
@@ -143,6 +145,36 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         return null;
     } 
 
+    public GameObject[] ReSpawn(PoolType id, int count)
+    {
+
+        GameObject[] obj = new GameObject[count];
+        
+        for (int i = 0; i < count; i++)
+        {
+            obj[i] = _dictGameObject[(int) id].ReSpawn();
+            if (obj[i] == null)
+            {
+                Debug.LogFormat("Pool {0} is empty.", id);
+
+                if (DynamicPool)
+                {
+                    obj[i] = Instantiate(_dictGameObject[(int) id].OriginalPrefabe());
+                    IPoollable IPoollabl = obj[i].GetComponent<IPoollable>();
+                    if(IPoollabl != null) IPoollabl.Init();
+
+                    Debug.LogFormat("Add one object to {0} pool.", id );
+                }
+            }
+
+            IPoollable iPoollable = obj[i].GetComponent<IPoollable>();
+            if(iPoollable != null) iPoollable.ReSpawn();
+        }
+        
+        return obj;
+    }
+
+
     public GameObject ReSpawn(PoolType id)
     {
         var obj = _dictGameObject[(int) id].ReSpawn();
@@ -165,7 +197,6 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         
         return obj;
     }
-
 
 
 
@@ -275,6 +306,8 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 public enum PoolType
 {
    Player,
-   Enemny
+   SmallEnemy,
+    MediumEnemy,
+    BigEnemy
     
 }

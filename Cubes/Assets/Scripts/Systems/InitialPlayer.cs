@@ -18,6 +18,7 @@ public class InitialPlayer : IEcsInitSystem
         
         var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
         moveComponent.Transform = player.transform;
+        moveComponent.Speed = GameManager.Instance.SpeedPlayer;
         
         player.transform.position = GameManager.Instance.RespawnPos.position;
         player.SetActive(true);

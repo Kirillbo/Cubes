@@ -17,7 +17,10 @@ public class GameProcess : AState
 #endif
 
         System.Add(new InitialPlayer()).
-            Add(new MoveSystem());
+            Add(new InitialEnemies()).
+               Add(new MoveSystem()).
+               //Add(new InputSystem()).
+               Add(new ControllerRespawnEnemies());
         System.Initialize();
     }
 

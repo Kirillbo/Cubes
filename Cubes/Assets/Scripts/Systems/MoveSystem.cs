@@ -15,7 +15,8 @@ public class MoveSystem : IEcsRunSystem
 			
 		for(int i = 0; i < _ecsFilter.EntitiesCount; i++)
 		{
-			_ecsFilter.Components1[i].Transform.position += Vector3.left * Time.deltaTime * 2;
+			var moveComponent = _ecsFilter.Components1[i];
+			moveComponent.Transform.position += moveComponent.Direction * Time.deltaTime * moveComponent.Speed;
 		}		
 	}
 }

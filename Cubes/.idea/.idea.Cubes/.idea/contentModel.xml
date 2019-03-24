@@ -94,15 +94,24 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Componentns" t="Include">
+            <e p="Enemy.cs" t="Include" />
             <e p="EventClickButton.cs" t="Include" />
             <e p="MoveComponent.cs" t="Include" />
+            <e p="PositionComponent.cs" t="Include" />
+            <e p="RenderComponentn.cs" t="Include" />
           </e>
           <e p="InitialiseManager.cs" t="Include" />
           <e p="Systems" t="Include">
+            <e p="ControllerRespawnEnemies.cs" t="Include" />
+            <e p="DespawnEnemySystem.cs" t="Include" />
+            <e p="InitialEnemies.cs" t="Include" />
             <e p="InitialPlayer.cs" t="Include" />
+            <e p="InputSystem.cs" t="Include" />
             <e p="MoveSystem.cs" t="Include" />
+            <e p="SpawnEnemySystem.cs" t="Include" />
           </e>
         </e>
+        <e p="Test.cs" t="Include" />
       </e>
       <e p="Cubes.sln" t="IncludeFlat" />
       <e p="Leopotam.Ecs.csproj" t="IncludeRecursive" />

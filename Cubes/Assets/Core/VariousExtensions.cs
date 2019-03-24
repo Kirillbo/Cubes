@@ -1,4 +1,5 @@
 ﻿using System;
+using Componentns;
 //using Components.BaseComponents;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -21,12 +22,11 @@ public static class VariousExtensions
 
     public static int CreateEntityWithPosition(this GameObject gameObject, EcsWorld ecsWorld)
     {
-       // PositionComponent position;
-       // int entity = ecsWorld.CreateEntityWith(out position);
-      //  position.Position = gameObject.transform.position.ToVector2Int();
+        PositionComponent position;
+        int entity = ecsWorld.CreateEntityWith(out position);
+        position.Position = gameObject.transform.position.ToVector2Int();
 
-        //return entity;
-        return 0;
+        return entity;        
     }
 
     /// <summary>

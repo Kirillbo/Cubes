@@ -86,11 +86,20 @@
     <Compile Include="Assets\Core\Tools\ToolsMove.cs" />
     <Compile Include="Assets\Core\Tools\ViewUtils.cs" />
     <Compile Include="Assets\Core\VariousExtensions.cs" />
+    <Compile Include="Assets\Scripts\Componentns\Enemy.cs" />
     <Compile Include="Assets\Scripts\Componentns\EventClickButton.cs" />
     <Compile Include="Assets\Scripts\Componentns\MoveComponent.cs" />
+    <Compile Include="Assets\Scripts\Componentns\PositionComponent.cs" />
+    <Compile Include="Assets\Scripts\Componentns\RenderComponentn.cs" />
     <Compile Include="Assets\Scripts\InitialiseManager.cs" />
+    <Compile Include="Assets\Scripts\Systems\ControllerRespawnEnemies.cs" />
+    <Compile Include="Assets\Scripts\Systems\DespawnEnemySystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\InitialEnemies.cs" />
     <Compile Include="Assets\Scripts\Systems\InitialPlayer.cs" />
+    <Compile Include="Assets\Scripts\Systems\InputSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\MoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
+    <Compile Include="Assets\Test.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

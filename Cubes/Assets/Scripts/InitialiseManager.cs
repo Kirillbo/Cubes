@@ -6,12 +6,17 @@ public class InitialiseManager : MonoBehaviour
 {
     
     public GameObject PlayerPrefab;
-    public GameObject EnemyPrefab;
+	public GameObject SmallEnemyPrefab;
+	public GameObject MeduimEnemyPrefab;
+	public GameObject BigEnemyPrefab;
 
-	// Use this for initialization
-	public void CreatAllPools ()
+	public void CreateAllPools ()
 	{
 	    PoolManager.Instance.CreatePool(PoolType.Player, 1, PlayerPrefab);
+		PoolManager.Instance.CreatePool(PoolType.SmallEnemy, 15, SmallEnemyPrefab);
+		PoolManager.Instance.CreatePool(PoolType.MediumEnemy, 11, MeduimEnemyPrefab);
+		PoolManager.Instance.CreatePool(PoolType.BigEnemy, 7, BigEnemyPrefab);
+
 	}
 	
 }
