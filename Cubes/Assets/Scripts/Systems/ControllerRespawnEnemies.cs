@@ -14,29 +14,34 @@ public class ControllerRespawnEnemies : IEcsInitSystem, IEcsRunSystem
 	private Transform _rootEnemies;
 	private float _offsetSprite;
 	private GameManager _gameManager;
+	private int _curCountActiveBlocks;
 	
 	public void Initialize()
 	{
 		_gameManager = GameManager.Instance;
 		_rootEnemies = GameObject.Find("RootEnemies").transform;
 		_offsetSprite = _enemies.Components3[0].SpriteRenderer[0].sprite.bounds.size.y;
+		_actualPosY = _gameManager.StartRespawnCubes.position.y;
 	}
 
 		
 	public void Run()
 	{
+		if(_curCountActiveBlocks == _gameManager.CountBlocksOnScene) return;
+		
+		
 		for (int i = 0; i < _enemies.EntitiesCount; i++)
 		{
-			
+			//_enemies.
 			var posComponent = _enemies.Components1[i];
-			if(posComponent.ChangePosition) continue;
-			posComponent.ChangePosition = true;
 			_enemies.Components4[i].Transform.position = CalculateActualPosition();
 			_enemies.Components4[i].Transform.SetParent(_rootEnemies);
 			_enemies.Components4[i].Transform.gameObject.SetActive(true);
 
 			SetHeartEnemy(_enemies.Components3[i]);
 		}
+
+		_curCountActiveBlocks++;
 	}
 
 	Vector2 CalculateActualPosition()
@@ -66,7 +71,7 @@ public class ControllerRespawnEnemies : IEcsInitSystem, IEcsRunSystem
 			render.tag = "Enemy";
 		}
 
-		var indexHeart = Random.Range(0, renders.Length + 1);
+		var indexHeart = Random.Range(0, renders.Length);
 		renders[indexHeart].sprite = _gameManager.SpriteRedEnemy;
 		renders[indexHeart].tag = "HeartEnemy";
 	}

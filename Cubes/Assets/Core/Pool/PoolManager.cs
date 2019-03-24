@@ -306,8 +306,9 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 public enum PoolType
 {
    Player,
+   Enemies,
    SmallEnemy,
-    MediumEnemy,
-    BigEnemy
+   MediumEnemy,
+   BigEnemy
     
 }

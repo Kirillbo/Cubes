@@ -100,6 +100,7 @@
             <e p="PositionComponent.cs" t="Include" />
             <e p="RenderComponentn.cs" t="Include" />
           </e>
+          <e p="DespawnWall.cs" t="Include" />
           <e p="InitialiseManager.cs" t="Include" />
           <e p="Systems" t="Include">
             <e p="ControllerRespawnEnemies.cs" t="Include" />

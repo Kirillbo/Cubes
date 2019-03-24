@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Scripts.Tools;
 using Leopotam.Ecs;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : SingltoonBehavior<GameManager>
@@ -29,6 +30,11 @@ public class GameManager : SingltoonBehavior<GameManager>
     public Sprite SpriteRedEnemy;
     public Sprite SpriteBlueEnemy;
 
+    public LayerMask Mask;
+
+    public Transform StartRespawnCubes;
+    public int CountBlocksOnScene;
+    
     protected override void Awake()
     {
         base.Awake();

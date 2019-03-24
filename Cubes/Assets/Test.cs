@@ -11,7 +11,12 @@ public class Test : MonoBehaviour {
 		gameObject.tag = "Zalypa";
 
 	}
-	
+
+	private void OnMouseDrag()
+	{
+		Debug.Log("test");
+	}
+
 	// Update is called once per frame
 	void Update () {
 		

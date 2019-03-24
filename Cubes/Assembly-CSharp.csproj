@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Componentns\MoveComponent.cs" />
     <Compile Include="Assets\Scripts\Componentns\PositionComponent.cs" />
     <Compile Include="Assets\Scripts\Componentns\RenderComponentn.cs" />
+    <Compile Include="Assets\Scripts\DespawnWall.cs" />
     <Compile Include="Assets\Scripts\InitialiseManager.cs" />
     <Compile Include="Assets\Scripts\Systems\ControllerRespawnEnemies.cs" />
     <Compile Include="Assets\Scripts\Systems\DespawnEnemySystem.cs" />
