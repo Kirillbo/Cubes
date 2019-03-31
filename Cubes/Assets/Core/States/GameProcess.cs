@@ -1,32 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Leopotam.Ecs;
+using Entitas;
 using UnityEngine;
 
 public class GameProcess : AState
 {
 
-    public EcsSystems System;
+    private Systems  _system;
 
     public override void Init()
     {
-       System = new EcsSystems(Manager.EcsWorld);
+        _system = new Systems();
+        Contexts contexts = Contexts.sharedInstance;
 
-#if UNITY_EDITOR
-        Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(System);
-#endif
-
-        System.Add(new InitialPlayer()).
-               Add(new InitialEnemies()).
-               Add(new MoveSystem()).
-               Add(new InputSystem()).
-               Add(new ControllerRespawnEnemies());
-        System.Initialize();
+        var entity = contexts.game.CreateEntity();
+        entity.AddPosition(Vector2.zero, true);
+        
+        
+        
+        _system.Add(new InitialPlayer(contexts));
+//                Add(new InitialEnemies()).
+//                Add(new MoveSystem()).
+//                Add(new InputSystem()).
+//                Add(new ControllerRespawnEnemies());
     }
 
     public override void Enter()
     {
-      //  throw new System.NotImplementedException();
+        _system.Initialize();
     }
 
     public override void Exit()
@@ -38,12 +39,8 @@ public class GameProcess : AState
     
     public override void Tick()
     {
-        i += 1;
-        if (i % 100 == 0)
-        {
-            System.Run();
-            i = 0;
-        }
+        _system.Execute();
+        _system.Cleanup();
     }
 
     public override void Clear()

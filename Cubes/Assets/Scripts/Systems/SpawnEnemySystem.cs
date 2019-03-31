@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Leopotam.Ecs;
 using UnityEngine;
 
-public class SpawnEnemySystem : IEcsRunSystem{
+public class SpawnEnemySystem {
 
 	public void Run()
 	{

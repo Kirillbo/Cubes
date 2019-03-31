@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Tools;
-using Leopotam.Ecs;
+using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,7 @@ public class GameManager : SingltoonBehavior<GameManager>
     [HideInInspector] public PoolManager Pool;
     private AState _activeState;
 
-    public EcsWorld EcsWorld;
+    public Contexts GlobContext;
     public float SpeedPlayer;
     public float SpeedEnemies;
 
@@ -43,8 +42,7 @@ public class GameManager : SingltoonBehavior<GameManager>
     private void Start()
     {
        InitialiseManager.CreateAllPools();
-       EcsWorld = new EcsWorld();
-       EcsWorld.CreateEntity();
+         
 
         InitAllStates(States);
         Invoke("GameStartt", 1f);
@@ -63,9 +61,7 @@ public class GameManager : SingltoonBehavior<GameManager>
             StateDictionary.Add(state.GetName(), state);
         }
 
-#if UNITY_EDITOR
-        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(EcsWorld);
-#endif
+
         
     }
 

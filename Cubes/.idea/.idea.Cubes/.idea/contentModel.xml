@@ -18,43 +18,6 @@
               <e p="EditorOverride.cs" t="Include" />
             </e>
           </e>
-          <e p="ecs-develop" t="Include">
-            <e p="Leopotam.Ecs.asmdef" t="Include" />
-            <e p="src" t="Include">
-              <e p="EcsComponentMask.cs" t="Include" />
-              <e p="EcsComponentPool.cs" t="Include" />
-              <e p="EcsFilter.cs" t="Include" />
-              <e p="EcsHelpers.cs" t="Include" />
-              <e p="EcsInjections.cs" t="Include" />
-              <e p="EcsSystems.cs" t="Include" />
-              <e p="EcsWorld.cs" t="Include" />
-            </e>
-          </e>
-          <e p="ecs-unityintegration-develop" t="Include">
-            <e p="Editor" t="Include">
-              <e p="EcsEntity.cs" t="Include" />
-              <e p="EcsSystems.cs" t="Include" />
-              <e p="EcsWorld.cs" t="Include" />
-              <e p="Inspectors" t="Include">
-                <e p="Quaternion.cs" t="Include" />
-                <e p="Vector3.cs" t="Include" />
-              </e>
-              <e p="Leopotam.Ecs.UnityIntegration.Editor.asmdef" t="Include" />
-              <e p="Templates" t="Include">
-                <e p="Component.cs.txt" t="Include" />
-                <e p="ComponentFlag.cs.txt" t="Include" />
-                <e p="ComponentOneFrame.cs.txt" t="Include" />
-                <e p="InitSystem.cs.txt" t="Include" />
-                <e p="RunSystem.cs.txt" t="Include" />
-                <e p="Startup.cs.txt" t="Include" />
-                <e p="TemplateGenerator.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Runtime" t="Include">
-              <e p="EditorHelpers.cs" t="Include" />
-              <e p="Leopotam.Ecs.UnityIntegration.asmdef" t="Include" />
-            </e>
-          </e>
           <e p="GameManager.cs" t="Include" />
           <e p="Pool" t="Include">
             <e p="IComponent.cs" t="Include" />
@@ -90,7 +53,36 @@
             <e p="ToolsMove.cs" t="Include" />
             <e p="ViewUtils.cs" t="Include" />
           </e>
-          <e p="VariousExtensions.cs" t="Include" />
+        </e>
+        <e p="DesperateDevs" t="Include">
+          <e p="Compile.cs" t="Include" />
+        </e>
+        <e p="Entitas" t="Include">
+          <e p="Entitas.xml" t="Include" />
+          <e p="LICENSE.txt" t="Include" />
+        </e>
+        <e p="Generated" t="Include">
+          <e p="Contexts.cs" t="Include" />
+          <e p="Feature.cs" t="Include" />
+          <e p="Game" t="Include">
+            <e p="Components" t="Include">
+              <e p="GameEnemyComponent.cs" t="Include" />
+              <e p="GameMoveComponent.cs" t="Include" />
+              <e p="GamePositionComponent.cs" t="Include" />
+            </e>
+            <e p="GameAttribute.cs" t="Include" />
+            <e p="GameComponentsLookup.cs" t="Include" />
+            <e p="GameContext.cs" t="Include" />
+            <e p="GameEntity.cs" t="Include" />
+            <e p="GameMatcher.cs" t="Include" />
+          </e>
+          <e p="Input" t="Include">
+            <e p="InputAttribute.cs" t="Include" />
+            <e p="InputComponentsLookup.cs" t="Include" />
+            <e p="InputContext.cs" t="Include" />
+            <e p="InputEntity.cs" t="Include" />
+            <e p="InputMatcher.cs" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Componentns" t="Include">
@@ -116,9 +108,6 @@
         <e p="Test.cs" t="Include" />
       </e>
       <e p="Cubes.sln" t="IncludeFlat" />
-      <e p="Leopotam.Ecs.csproj" t="IncludeRecursive" />
-      <e p="Leopotam.Ecs.UnityIntegration.csproj" t="IncludeRecursive" />
-      <e p="Leopotam.Ecs.UnityIntegration.Editor.csproj" t="IncludeRecursive" />
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />

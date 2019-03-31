@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Componentns;
-using Leopotam.Ecs;
+using Entitas;
 using UnityEngine;
-using Leopotam.Ecs;
 
 
-[EcsInject]
-public class InitialPlayer : IEcsInitSystem
+public class InitialPlayer : IInitializeSystem
 {
-    private EcsWorld _ecsWorld = null;
+    private Contexts _ecsWorld;
 
+    public InitialPlayer(Contexts contexts)
+    {
+        _ecsWorld = contexts;
+    }
+    
     public void Initialize()
     {
         var player = PoolManager.Instance.Get(PoolType.Player);
-        var entity = player.CreateEntityWithPosition(_ecsWorld);
-        _ecsWorld.CreateEntity();
+        _ecsWorld.game.CreateEntity();
         
-        var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
-        moveComponent.Transform = player.transform;
-        moveComponent.Speed = GameManager.Instance.SpeedPlayer;
+//        var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
+//        moveComponent.Transform = player.transform;
+//        moveComponent.Speed = GameManager.Instance.SpeedPlayer;
         
         player.transform.position = GameManager.Instance.RespawnPos.position;
         player.SetActive(true);

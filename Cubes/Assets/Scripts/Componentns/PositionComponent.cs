@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
+using Entitas;
 
-namespace Componentns
-{
-	public class PositionComponent
+	public class PositionComponent : IComponent
 	{
 		public Vector2 Position;
 		public bool ChangePosition;
 	}
-}

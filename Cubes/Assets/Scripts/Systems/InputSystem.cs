@@ -1,14 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Componentns;
-using Leopotam.Ecs;
 using UnityEngine;
 
-[EcsInject]
-public class InputSystem : IEcsInitSystem,IEcsRunSystem
+public class InputSystem 
 {
 
-	private EcsFilter<MoveComponent> _moveComponents = null;
+//	private EcsFilter<MoveComponent> _moveComponents = null;
 	private LayerMask _mask;
 	private Transform _activeObject = null;
 	private Camera _mainCam;
@@ -71,10 +68,10 @@ public class InputSystem : IEcsInitSystem,IEcsRunSystem
 
 	void SetInputDirection(Vector3 direction)
 	{
-		for (int i = 0; i < _moveComponents.EntitiesCount; i++)
-		{
-			_moveComponents.Components1[i].Direction = direction;
-		}
+//		for (int i = 0; i < _moveComponents.EntitiesCount; i++)
+//		{
+//			_moveComponents.Components1[i].Direction = direction;
+//		}
 	}
 
 

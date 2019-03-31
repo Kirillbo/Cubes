@@ -337,6 +337,69 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Time/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.Unity.Editor">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Entitas.Unity.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.VisualDebugging.Unity">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.VisualDebugging.CodeGeneration.Plugins">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Plugins/Entitas.VisualDebugging.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.Unity.Plugins">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/Plugins/DesperateDevs.CodeGeneration.Unity.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Networking">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/DesperateDevs.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator.Unity.Editor">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/DesperateDevs.CodeGeneration.CodeGenerator.Unity.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.Unity">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Entitas.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Unity.Editor">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/DesperateDevs.Unity.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Logging">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Analytics">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/DesperateDevs.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Serialization">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.Plugins">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/Editor/Plugins/DesperateDevs.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.Migration">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Entitas.Migration.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Plugins">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Plugins/Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.VisualDebugging.Unity.Editor">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Entitas.VisualDebugging.Unity.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.Migration.Unity.Editor">
+      <HintPath>C:/Users/Time/Desktop/Cubes/Cubes/Assets/Entitas/Editor/Entitas.Migration.Unity.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity_3.0/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
     </Reference>
@@ -369,18 +432,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{84174D7D-7DCC-4544-112F-78637EC20626}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="Leopotam.Ecs.UnityIntegration.Editor.csproj">
-      <Project>{CA2340F4-67E4-CAE7-EFCD-A785E6508E7C}</Project>
-      <Name>Leopotam.Ecs.UnityIntegration.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Leopotam.Ecs.csproj">
-      <Project>{7349CD5E-2375-03CC-F70A-DF25179F8EEC}</Project>
-      <Name>Leopotam.Ecs</Name>
-    </ProjectReference>
-    <ProjectReference Include="Leopotam.Ecs.UnityIntegration.csproj">
-      <Project>{C9290EA1-2A5C-A2FA-C758-A3179652A7DA}</Project>
-      <Name>Leopotam.Ecs.UnityIntegration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

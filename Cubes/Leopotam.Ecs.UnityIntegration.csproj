@@ -345,12 +345,6 @@
       <HintPath>C:/Program Files/Unity_3.0/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Leopotam.Ecs.csproj">
-      <Project>{7349CD5E-2375-03CC-F70A-DF25179F8EEC}</Project>
-      <Name>Leopotam.Ecs</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

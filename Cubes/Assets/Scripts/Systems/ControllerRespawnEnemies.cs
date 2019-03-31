@@ -1,15 +1,13 @@
 ﻿	using System.Collections;
 	using System.Collections.Generic;
-	using Componentns;
-	using Leopotam.Ecs;
+	
 	using Tools;
 	using UnityEngine;
 	
-	[EcsInject]
-	public class ControllerRespawnEnemies : IEcsInitSystem, IEcsRunSystem
+	public class ControllerRespawnEnemies 
 	{
-		private EcsWorld _ecsWorld = null;
-		private EcsFilter<PositionComponent, EnemyComponent, DeactivateComponentttt, MoveComponent> _enemies = null;
+//		private EcsWorld _ecsWorld = null;
+//		private EcsFilter<PositionComponent, EnemyComponent, DeactivateComponentttt, MoveComponent> _enemies = null;
 		
 		private float _actualPosY;
 		private Transform _rootEnemies;
@@ -50,35 +48,19 @@
 		}
 	
 		
-		void RespawnEnemy2()
-		{
-			if(_enemies.EntitiesCount < 1) return;
-			
-			for (int i = 0; i < _enemies.EntitiesCount-1; i++)
-			{
-//				var moveComponent = _enemies.Components4[i];
-//				moveComponent.Transform.position = CalculateActualPosition();
-//				moveComponent.Transform.SetParent(_rootEnemies);
-//				moveComponent.Transform.gameObject.SetActive(true);
-//
-//				SetHeartEnemy(_enemies.Components3[i]);
-				_ecsWorld.RemoveComponent<DeactivateComponentttt>(_enemies.Entities[i]);
-				Debug.Log(_enemies.EntitiesCount);
-			}
-			
-		}
 		
-		void RespawnEnemy()
-		{
-			
-			var moveComponent = _enemies.Components4[0];
-			moveComponent.Transform.position = CalculateActualPosition();
-			moveComponent.Transform.SetParent(_rootEnemies);
-			moveComponent.Transform.gameObject.SetActive(true);
-	
-			//SetHeartEnemy(_enemies.Components3[0]);
-		//	_ecsWorld.RemoveEntity(_enemies.Entities[0]);
-		}
+		
+//		void RespawnEnemy()
+//		{
+//			
+//			var moveComponent = _enemies.Components4[0];
+//			moveComponent.Transform.position = CalculateActualPosition();
+//			moveComponent.Transform.SetParent(_rootEnemies);
+//			moveComponent.Transform.gameObject.SetActive(true);
+//	
+//			//SetHeartEnemy(_enemies.Components3[0]);
+//		//	_ecsWorld.RemoveEntity(_enemies.Entities[0]);
+//		}
 		
 		Vector2 CalculateActualPosition()
 		{

@@ -357,10 +357,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Leopotam.Ecs.csproj">
-      <Project>{7349CD5E-2375-03CC-F70A-DF25179F8EEC}</Project>
-      <Name>Leopotam.Ecs</Name>
-    </ProjectReference>
     <ProjectReference Include="Leopotam.Ecs.UnityIntegration.csproj">
       <Project>{C9290EA1-2A5C-A2FA-C758-A3179652A7DA}</Project>
       <Name>Leopotam.Ecs.UnityIntegration</Name>
