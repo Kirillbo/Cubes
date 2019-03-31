@@ -15,6 +15,7 @@ public class InitialPlayer : IEcsInitSystem
     {
         var player = PoolManager.Instance.Get(PoolType.Player);
         var entity = player.CreateEntityWithPosition(_ecsWorld);
+        _ecsWorld.CreateEntity();
         
         var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
         moveComponent.Transform = player.transform;

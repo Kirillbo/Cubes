@@ -2,7 +2,7 @@
 // The MIT License
 // Unity integration https://github.com/Leopotam/ecs-unityintegration
 // for ECS framework https://github.com/Leopotam/ecs
-// Copyright (c) 2017-2019 Leopotam <leopotam@gmail.com>
+// Copyright (c) 2018 Leopotam <leopotam@gmail.com>
 // ----------------------------------------------------------------------------
 
 using System;
@@ -14,7 +14,7 @@ using UnityEngine;
 namespace Leopotam.Ecs.UnityIntegration.Editor {
     [CustomEditor (typeof (EcsEntityObserver))]
     sealed class EcsEntityObserverInspector : UnityEditor.Editor {
-        const int MaxFieldToStringLength = 128;
+        const int MaxFieldToStringLength = 512;
 
         static object[] _componentsCache = new object[32];
 

@@ -26,6 +26,7 @@ public class InitialEnemies : IEcsInitSystem
             moveComponent.Speed = 1;
 
             _ecsWorld.AddComponent<EnemyComponent>(entity);
+            _ecsWorld.AddComponent<DeactivateComponentttt>(entity);
             var renderComponent = _ecsWorld.AddComponent<RenderComponentn>(entity);
             renderComponent.SpriteRenderer = enemy.GetComponentsInChildren<SpriteRenderer>();
         }
@@ -44,4 +45,6 @@ public class InitialEnemies : IEcsInitSystem
     {
         
     }
+
+   
 }

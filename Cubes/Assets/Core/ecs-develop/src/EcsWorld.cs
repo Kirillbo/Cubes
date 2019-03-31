@@ -1,11 +1,10 @@
 // ----------------------------------------------------------------------------
 // The MIT License
 // Simple Entity Component System framework https://github.com/Leopotam/ecs
-// Copyright (c) 2017-2019 Leopotam <leopotam@gmail.com>
+// Copyright (c) 2017-2018 Leopotam <leopotam@gmail.com>
 // ----------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Leopotam.Ecs.Internals;
 
 #if ENABLE_IL2CPP
@@ -69,35 +68,37 @@ namespace Leopotam.Ecs {
         /// <summary>
         /// List of all entities (their components).
         /// </summary>
-        protected EcsEntity[] _entities = new EcsEntity[1024];
+        EcsEntity[] _entities = new EcsEntity[1024];
 
-        protected int _entitiesCount;
+        int _entitiesCount;
 
         /// <summary>
         /// List of removed entities - they can be reused later.
         /// </summary>
-        protected int[] _reservedEntities = new int[256];
+        int[] _reservedEntities = new int[256];
 
-        protected int _reservedEntitiesCount;
+        int _reservedEntitiesCount;
 
         /// <summary>
         /// List of add / remove operations for components on entities.
         /// </summary>
-        protected DelayedUpdate[] _delayedUpdates = new DelayedUpdate[1024];
+        DelayedUpdate[] _delayedUpdates = new DelayedUpdate[1024];
 
-        protected int _delayedUpdatesCount;
+        int _delayedUpdatesCount;
 
         /// <summary>
         /// List of requested filters.
         /// </summary>
-        protected EcsFilter[] _filters = new EcsFilter[64];
+        EcsFilter[] _filters = new EcsFilter[64];
 
-        protected int _filtersCount;
+        int _filtersCount;
 
         /// <summary>
         /// List of requested one-frame component filters.
         /// </summary>
-        protected readonly Dictionary<int, EcsFilter> _oneFrameFilters = new Dictionary<int, EcsFilter> (32);
+        EcsFilter[] _oneFrameFilters = new EcsFilter[32];
+
+        int _oneFrameFiltersCount;
 
         /// <summary>
         /// Temporary buffer for filter updates.
@@ -151,7 +152,8 @@ namespace Leopotam.Ecs {
             _entitiesCount = 0;
             _filters = null;
             _filtersCount = 0;
-            _oneFrameFilters.Clear ();
+            _oneFrameFilters = null;
+            _oneFrameFiltersCount = 0;
             _reservedEntities = null;
             _reservedEntitiesCount = 0;
             _delayedUpdates = null;
@@ -311,14 +313,7 @@ namespace Leopotam.Ecs {
             for (var i = 0; i < entityData.ComponentsCount; i++) {
                 if (entityData.Components[i].Pool == pool) {
                     isNew = false;
-                    return pool.Items[entityData.Components[i].ItemId];
-                }
-            }
-
-            // create separate filter for one-frame components.
-            if (pool.IsOneFrame) {
-                if (!_oneFrameFilters.ContainsKey (pool.GetComponentTypeIndex ())) {
-                    _oneFrameFilters[pool.GetComponentTypeIndex ()] = GetFilter (typeof (EcsFilter<T>));
+                    return (T) entityData.Components[i].Pool.GetExistItemById (entityData.Components[i].ItemId);
                 }
             }
 
@@ -364,13 +359,6 @@ namespace Leopotam.Ecs {
             }
             if (i != -1) { throw new Exception (string.Format ("\"{0}\" component already exists on entity {1}", typeof (T).Name, entity)); }
 #endif
-            // create separate filter for one-frame components.
-            if (pool.IsOneFrame) {
-                if (!_oneFrameFilters.ContainsKey (pool.GetComponentTypeIndex ())) {
-                    _oneFrameFilters[pool.GetComponentTypeIndex ()] = GetFilter (typeof (EcsFilter<T>));
-                }
-            }
-
             var link = new ComponentLink (pool, pool.RequestNewId ());
             if (entityData.ComponentsCount == entityData.Components.Length) {
                 Array.Resize (ref entityData.Components, entityData.ComponentsCount << 1);
@@ -488,7 +476,7 @@ namespace Leopotam.Ecs {
                 ReservedEntities = _reservedEntitiesCount,
                 Filters = _filtersCount,
                 Components = EcsHelpers.ComponentsCount,
-                OneFrameComponents = _oneFrameFilters.Count
+                OneFrameComponents = _oneFrameFiltersCount
             };
             return stats;
         }
@@ -594,9 +582,6 @@ namespace Leopotam.Ecs {
         /// <summary>
         /// Gets filter with specific include / exclude masks.
         /// </summary>
-#if NET_4_6 || NET_STANDARD_2_0
-        [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-#endif
         public T GetFilter<T> () where T : EcsFilter {
             return GetFilter (typeof (T)) as T;
         }
@@ -605,9 +590,6 @@ namespace Leopotam.Ecs {
         /// Gets filter with specific include / exclude masks.
         /// </summary>
         /// <param name="filterType">Type of filter.</param>
-#if NET_4_6 || NET_STANDARD_2_0
-        [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-#endif
         public EcsFilter GetFilter (Type filterType) {
 #if DEBUG
             if (filterType == null) { throw new Exception ("FilterType is null"); }
@@ -619,7 +601,7 @@ namespace Leopotam.Ecs {
                 }
             }
             var filter = (EcsFilter) Activator.CreateInstance (filterType, true);
-            filter.World = this;
+            filter.SetWorld (this);
 #if DEBUG
             for (int j = 0, jMax = _filtersCount; j < jMax; j++) {
                 if (_filters[j].IncludeMask.IsEquals (filter.IncludeMask) && _filters[j].ExcludeMask.IsEquals (filter.ExcludeMask)) {
@@ -631,6 +613,14 @@ namespace Leopotam.Ecs {
                 Array.Resize (ref _filters, _filtersCount << 1);
             }
             _filters[_filtersCount++] = filter;
+
+            // one-frame component filters.
+            if (filter.IncludeMask.BitsCount == 1 && filter.GetComponentPool (0).IsOneFrameComponent ()) {
+                if (_oneFrameFilters.Length == _oneFrameFiltersCount) {
+                    Array.Resize (ref _oneFrameFilters, _oneFrameFiltersCount << 1);
+                }
+                _oneFrameFilters[_oneFrameFiltersCount++] = filter;
+            }
 
             return filter;
         }
@@ -648,10 +638,10 @@ namespace Leopotam.Ecs {
                     break;
                 }
             }
-
-            foreach (var pair in _oneFrameFilters) {
-                if (pair.Value.GetType () == filterType) {
-                    _oneFrameFilters.Remove (pair.Key);
+            for (int i = 0, iMax = _oneFrameFiltersCount; i < iMax; i++) {
+                if (_oneFrameFilters[i].GetType () == filterType) {
+                    _oneFrameFiltersCount--;
+                    Array.Copy (_oneFrameFilters, i + 1, _oneFrameFilters, i, _oneFrameFiltersCount - i);
                     break;
                 }
             }
@@ -661,8 +651,8 @@ namespace Leopotam.Ecs {
         /// Removes all components marked with EcsOneFrameAttribute.
         /// </summary>
         public void RemoveOneFrameComponents () {
-            foreach (var pair in _oneFrameFilters) {
-                var filter = pair.Value;
+            for (int f = 0, fMax = _oneFrameFiltersCount; f < fMax; f++) {
+                var filter = _oneFrameFilters[f];
                 if (filter.EntitiesCount > 0) {
                     var pool = filter.GetComponentPool (0);
                     for (int e = 0, eMax = filter.EntitiesCount; e < eMax; e++) {
@@ -687,7 +677,7 @@ namespace Leopotam.Ecs {
 #if NET_4_6 || NET_STANDARD_2_0
         [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
 #endif
-        protected int CreateEntityInternal () {
+        int CreateEntityInternal () {
             int entity;
             if (_reservedEntitiesCount > 0) {
                 _reservedEntitiesCount--;
@@ -716,7 +706,7 @@ namespace Leopotam.Ecs {
 #if NET_4_6 || NET_STANDARD_2_0
         [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
 #endif
-        protected void AddDelayedUpdate (DelayedUpdate.Op type, int entity, IEcsComponentPool component, int componentId) {
+        void AddDelayedUpdate (DelayedUpdate.Op type, int entity, IEcsComponentPool component, int componentId) {
             if (_delayedUpdatesCount == _delayedUpdates.Length) {
                 Array.Resize (ref _delayedUpdates, _delayedUpdatesCount << 1);
             }
@@ -731,7 +721,7 @@ namespace Leopotam.Ecs {
 #if NET_4_6 || NET_STANDARD_2_0
         [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
 #endif
-        protected void ReserveEntity (int entity, EcsEntity entityData) {
+        void ReserveEntity (int entity, EcsEntity entityData) {
             entityData.IsReserved = true;
             if (_reservedEntitiesCount == _reservedEntities.Length) {
                 Array.Resize (ref _reservedEntities, _reservedEntitiesCount << 1);
@@ -758,7 +748,7 @@ namespace Leopotam.Ecs {
 #if NET_4_6 || NET_STANDARD_2_0
         [System.Runtime.CompilerServices.MethodImpl (System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
 #endif
-        protected void UpdateFilters (int entity, EcsComponentMask oldMask, EcsComponentMask newMask) {
+        void UpdateFilters (int entity, EcsComponentMask oldMask, EcsComponentMask newMask) {
             for (var i = _filtersCount - 1; i >= 0; i--) {
                 var filter = _filters[i];
                 var isNewMaskCompatible = newMask.IsCompatible (filter);
@@ -784,7 +774,7 @@ namespace Leopotam.Ecs {
         }
 
         [System.Runtime.InteropServices.StructLayout (System.Runtime.InteropServices.LayoutKind.Sequential, Pack = 1)]
-        protected struct DelayedUpdate {
+        struct DelayedUpdate {
             public enum Op : byte {
                 RemoveEntity,
                 SafeRemoveEntity,
@@ -804,7 +794,7 @@ namespace Leopotam.Ecs {
             }
         }
 
-        protected struct ComponentLink {
+        struct ComponentLink {
             public IEcsComponentPool Pool;
             public int ItemId;
 
@@ -814,7 +804,7 @@ namespace Leopotam.Ecs {
             }
         }
 
-        protected sealed class EcsEntity {
+        sealed class EcsEntity {
             public bool IsReserved;
             public readonly EcsComponentMask Mask = new EcsComponentMask ();
             public int ComponentsCount;

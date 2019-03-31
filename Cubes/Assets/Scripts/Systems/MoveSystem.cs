@@ -9,6 +9,8 @@ public class MoveSystem : IEcsRunSystem
 {
 
 	private EcsFilter<MoveComponent> _ecsFilter = null;
+	private EcsFilter<DeactivateComponentttt, MoveComponent> kek = null;
+	private EcsWorld _ecsWorld = null;
 
 	public void Run()
 	{
@@ -17,6 +19,14 @@ public class MoveSystem : IEcsRunSystem
 		{
 			var moveComponent = _ecsFilter.Components1[i];
 			moveComponent.Transform.position += moveComponent.Direction * Time.deltaTime * moveComponent.Speed;
-		}		
+		}
+
+	
+		Debug.Log(kek.EntitiesCount);
+
+		for (int i = 0; i < kek.EntitiesCount-1; i++)
+		{
+			_ecsWorld.RemoveComponent<DeactivateComponentttt>(kek.Entities[i]);
+		}
 	}
 }

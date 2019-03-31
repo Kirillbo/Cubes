@@ -1,6 +1,5 @@
 ﻿using System;
 using Componentns;
-//using Components.BaseComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ public static class VariousExtensions
         int entity = ecsWorld.CreateEntityWith(out position);
         position.Position = gameObject.transform.position.ToVector2Int();
 
-        return entity;        
+        return entity;
     }
 
     /// <summary>

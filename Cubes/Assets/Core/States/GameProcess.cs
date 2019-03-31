@@ -17,7 +17,7 @@ public class GameProcess : AState
 #endif
 
         System.Add(new InitialPlayer()).
-            Add(new InitialEnemies()).
+               Add(new InitialEnemies()).
                Add(new MoveSystem()).
                Add(new InputSystem()).
                Add(new ControllerRespawnEnemies());
@@ -34,9 +34,16 @@ public class GameProcess : AState
         throw new System.NotImplementedException();
     }
 
+    private int i = 0;
+    
     public override void Tick()
     {
-        System.Run();
+        i += 1;
+        if (i % 100 == 0)
+        {
+            System.Run();
+            i = 0;
+        }
     }
 
     public override void Clear()

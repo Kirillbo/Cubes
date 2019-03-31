@@ -1,11 +1,4 @@
-﻿// ----------------------------------------------------------------------------
-// The MIT License
-// Unity integration https://github.com/Leopotam/ecs-unityintegration
-// for ECS framework https://github.com/Leopotam/ecs
-// Copyright (c) 2017-2019 Leopotam <leopotam@gmail.com>
-// ----------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using UnityEditor;
@@ -26,62 +19,42 @@ namespace Leopotam.Ecs.UnityIntegration.Editor.Prototypes {
         const string ComponentFlagTemplate = "ComponentFlag.cs.txt";
         const string ComponentOneFrameTemplate = "ComponentOneFrame.cs.txt";
 
-        [MenuItem ("Assets/Create/LeoECS/Create Startup template", false, -200)]
+        [MenuItem ("Assets/Create/LeoECS/Create Startup template", false, 10)]
         static void CreateStartupTpl () {
-            var assetPath = GetAssetPath ();
             CreateAndRenameAsset (
-                string.Format ("{0}/EcsStartup.cs", assetPath),
-                GetIcon (), name => {
-                    if (CreateTemplateInternal (GetTemplateContent (StartupTemplate), name) == null) {
-                        if (EditorUtility.DisplayDialog (Title, "Create data folders?", "Yes", "No")) {
-                            CreateEmptyFolder (string.Format ("{0}/Components", assetPath));
-                            CreateEmptyFolder (string.Format ("{0}/Systems", assetPath));
-                            CreateEmptyFolder (string.Format ("{0}/UnityComponents", assetPath));
-                            CreateEmptyFolder (string.Format ("{0}/Services", assetPath));
-                            AssetDatabase.Refresh ();
-                        }
-                    }
-                });
+                string.Format ("{0}/EcsStartup.cs", GetAssetPath ()),
+                GetIcon (), name => CreateTemplateInternal (GetTemplateContent (StartupTemplate), name));
         }
 
-        static void CreateEmptyFolder (string folderPath) {
-            if (!Directory.Exists (folderPath)) {
-                try {
-                    Directory.CreateDirectory (folderPath);
-                    File.Create (string.Format ("{0}/.gitkeep", folderPath));
-                } catch { }
-            }
-        }
-
-        [MenuItem ("Assets/Create/LeoECS/Systems/Create InitSystem template", false, -199)]
+        [MenuItem ("Assets/Create/LeoECS/Systems/Create InitSystem template", false, 11)]
         static void CreateInitSystemTpl () {
             CreateAndRenameAsset (
                 string.Format ("{0}/EcsInitSystem.cs", GetAssetPath ()),
                 GetIcon (), name => CreateTemplateInternal (GetTemplateContent (InitSystemTemplate), name));
         }
 
-        [MenuItem ("Assets/Create/LeoECS/Systems/Create RunSystem template", false, -198)]
+        [MenuItem ("Assets/Create/LeoECS/Systems/Create RunSystem template", false, 12)]
         static void CreateRunSystemTpl () {
             CreateAndRenameAsset (
                 string.Format ("{0}/EcsRunSystem.cs", GetAssetPath ()),
                 GetIcon (), name => CreateTemplateInternal (GetTemplateContent (RunSystemTemplate), name));
         }
 
-        [MenuItem ("Assets/Create/LeoECS/Components/Create Component (common) template", false, -197)]
+        [MenuItem ("Assets/Create/LeoECS/Components/Create Component (common) template", false, 13)]
         static void CreateComponentTpl () {
             CreateAndRenameAsset (
                 string.Format ("{0}/EcsComponent.cs", GetAssetPath ()),
                 GetIcon (), name => CreateTemplateInternal (GetTemplateContent (ComponentTemplate), name));
         }
 
-        [MenuItem ("Assets/Create/LeoECS/Components/Create Component (no-data) template", false, -196)]
+        [MenuItem ("Assets/Create/LeoECS/Components/Create Component (no-data) template", false, 14)]
         static void CreateComponentFlagTpl () {
             CreateAndRenameAsset (
                 string.Format ("{0}/EcsComponentFlag.cs", GetAssetPath ()),
                 GetIcon (), name => CreateTemplateInternal (GetTemplateContent (ComponentFlagTemplate), name));
         }
 
-        [MenuItem ("Assets/Create/LeoECS/Components/Create OneFrame Component template", false, -195)]
+        [MenuItem ("Assets/Create/LeoECS/Components/Create OneFrame Component template", false, 14)]
         static void CreateOneFrameComponentTpl () {
             CreateAndRenameAsset (
                 string.Format ("{0}/EcsOneFrameComponent.cs", GetAssetPath ()),
@@ -121,12 +94,11 @@ namespace Leopotam.Ecs.UnityIntegration.Editor.Prototypes {
             return sb.ToString ();
         }
 
-        static string CreateTemplateInternal (string proto, string fileName) {
+        static void CreateTemplateInternal (string proto, string fileName) {
             var res = CreateTemplate (proto, fileName);
             if (res != null) {
                 EditorUtility.DisplayDialog (Title, res, "Close");
             }
-            return res;
         }
 
         static string GetTemplateContent (string proto) {

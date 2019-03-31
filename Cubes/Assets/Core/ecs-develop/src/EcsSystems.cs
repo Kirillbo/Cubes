@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // The MIT License
 // Simple Entity Component System framework https://github.com/Leopotam/ecs
-// Copyright (c) 2017-2019 Leopotam <leopotam@gmail.com>
+// Copyright (c) 2017-2018 Leopotam <leopotam@gmail.com>
 // ----------------------------------------------------------------------------
 
 using System;
@@ -68,7 +68,7 @@ namespace Leopotam.Ecs {
     [Unity.IL2CPP.CompilerServices.Il2CppSetOption (Unity.IL2CPP.CompilerServices.Option.NullChecks, false)]
     [Unity.IL2CPP.CompilerServices.Il2CppSetOption (Unity.IL2CPP.CompilerServices.Option.ArrayBoundsChecks, false)]
 #endif
-    public sealed class EcsSystems : IDisposable, IEcsInitSystem, IEcsRunSystem {
+    public sealed class EcsSystems : IDisposable, IEcsRunSystem, IEcsInitSystem {
 #if DEBUG
         /// <summary>
         /// List of all debug listeners.
@@ -77,8 +77,6 @@ namespace Leopotam.Ecs {
 
         readonly public System.Collections.Generic.List<bool> DisabledInDebugSystems = new System.Collections.Generic.List<bool> (32);
 #endif
-
-        public readonly string Name;
 
         /// <summary>
         /// Ecs world instance.
@@ -127,19 +125,13 @@ namespace Leopotam.Ecs {
         bool _isDisposed;
 #endif
 
-        /// <summary>
-        /// Creates new instance of EcsSystems group.
-        /// </summary>
-        /// <param name="world">EcsWorld instance.</param>
-        /// <param name="name">Custom name for this group.</param>
-        public EcsSystems (EcsWorld world, string name = null) {
+        public EcsSystems (EcsWorld world) {
 #if DEBUG
             if (world == null) {
                 throw new ArgumentNullException ();
             }
 #endif
             _world = world;
-            Name = name;
         }
 
 #if DEBUG
@@ -285,13 +277,6 @@ namespace Leopotam.Ecs {
 #endif
 #if !LEOECS_DISABLE_INJECT
             for (var i = 0; i < _injectSystemsCount; i++) {
-                // injection for nested EcsSystems.
-                var nestedSystems = _injectSystems[i] as EcsSystems;
-                if (nestedSystems != null) {
-                    foreach (var pair in _injections) {
-                        nestedSystems._injections[pair.Key] = pair.Value;
-                    }
-                }
                 EcsInjections.Inject (_injectSystems[i], _world, _injections);
             }
 #endif
