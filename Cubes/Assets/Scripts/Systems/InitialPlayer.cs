@@ -16,12 +16,10 @@ public class InitialPlayer : IInitializeSystem
     public void Initialize()
     {
         var player = PoolManager.Instance.Get(PoolType.Player);
-        _ecsWorld.game.CreateEntity();
+        var entity = _ecsWorld.game.CreateEntity();
         
-//        var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
-//        moveComponent.Transform = player.transform;
-//        moveComponent.Speed = GameManager.Instance.SpeedPlayer;
-        
+        entity.AddMove(GameManager.Instance.SpeedPlayer, Vector3.zero, player.transform);
+        entity.Retain(player);
         player.transform.position = GameManager.Instance.RespawnPos.position;
         player.SetActive(true);
         

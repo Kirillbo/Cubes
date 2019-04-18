@@ -15,12 +15,11 @@ public class GameProcess : AState
 
         var entity = contexts.game.CreateEntity();
         entity.AddPosition(Vector2.zero, true);
-        
-        
-        
-        _system.Add(new InitialPlayer(contexts));
-//                Add(new InitialEnemies()).
-//                Add(new MoveSystem()).
+
+
+        _system.Add(new InitialPlayer(contexts)).
+                Add(new InitialEnemies(contexts)).
+                Add(new MoveSystem(contexts));
 //                Add(new InputSystem()).
 //                Add(new ControllerRespawnEnemies());
     }

@@ -6,6 +6,7 @@
 	
 	public class ControllerRespawnEnemies 
 	{
+		
 //		private EcsWorld _ecsWorld = null;
 //		private EcsFilter<PositionComponent, EnemyComponent, DeactivateComponentttt, MoveComponent> _enemies = null;
 		

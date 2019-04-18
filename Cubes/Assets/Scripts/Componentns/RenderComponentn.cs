@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using UnityEngine;
 
-public class RenderComponentn
+public class RenderComponentn : IComponent
 {
 	public SpriteRenderer[] SpriteRenderer;
 }

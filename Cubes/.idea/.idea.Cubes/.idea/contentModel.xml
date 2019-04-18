@@ -66,9 +66,11 @@
           <e p="Feature.cs" t="Include" />
           <e p="Game" t="Include">
             <e p="Components" t="Include">
+              <e p="GameDeactivateComponent.cs" t="Include" />
               <e p="GameEnemyComponent.cs" t="Include" />
               <e p="GameMoveComponent.cs" t="Include" />
               <e p="GamePositionComponent.cs" t="Include" />
+              <e p="GameRenderComponentnComponent.cs" t="Include" />
             </e>
             <e p="GameAttribute.cs" t="Include" />
             <e p="GameComponentsLookup.cs" t="Include" />
@@ -86,7 +88,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Componentns" t="Include">
-            <e p="DeactivateComponentttt.cs" t="Include" />
+            <e p="DeactivateComponent.cs" t="Include" />
             <e p="Enemy.cs" t="Include" />
             <e p="EventClickButton.cs" t="Include" />
             <e p="MoveComponent.cs" t="Include" />

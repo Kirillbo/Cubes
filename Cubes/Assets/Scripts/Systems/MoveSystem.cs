@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 
-public class MoveSystem 
+public class MoveSystem : IExecuteSystem
 {
+	private Contexts _pool;
+	private Group _movableGroup;
 
-//	private EcsFilter<MoveComponent> _ecsFilter = null;
-//	private EcsFilter<DeactivateComponentttt, MoveComponent> kek = null;
-//	private EcsWorld _ecsWorld = null;
-
-	public void Run()
+	public MoveSystem(Contexts contexts)
 	{
-			
+		_pool = contexts;
+	}
+
+	public void Execute()
+	{
 //		for(int i = 0; i < _ecsFilter.EntitiesCount; i++)
 //		{
 //			var moveComponent = _ecsFilter.Components1[i];

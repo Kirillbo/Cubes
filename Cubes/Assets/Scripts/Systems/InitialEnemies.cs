@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Principal;
+using Entitas;
 using UnityEngine;
 
-public class InitialEnemies 
+public class InitialEnemies : IInitializeSystem
 {
     public int CountEnemies;
-//    private EcsWorld _ecsWorld = null;
+    private Contexts _ecsWorld;
 
+    public InitialEnemies(Contexts contexts)
+    {
+        _ecsWorld = contexts;
+    }
+    
     public void Initialize()
     {
         List<GameObject> enemies = new List<GameObject>();
@@ -15,28 +21,18 @@ public class InitialEnemies
         enemies.AddRange(PoolManager.Instance.ReSpawn(PoolType.MediumEnemy, 7));
         enemies.AddRange(PoolManager.Instance.ReSpawn(PoolType.BigEnemy, 5));
 
-//        foreach (var enemy in enemies)
-//        {
-//            var entity = enemy.CreateEntityWithPosition(_ecsWorld);
-//            var moveComponent = _ecsWorld.AddComponent<MoveComponent>(entity);
-//            moveComponent.Transform = enemy.transform;
-//            moveComponent.Speed = 1;
-//
-//            _ecsWorld.AddComponent<EnemyComponent>(entity);
-//            _ecsWorld.AddComponent<DeactivateComponentttt>(entity);
-//            var renderComponent = _ecsWorld.AddComponent<RenderComponentn>(entity);
-//            renderComponent.SpriteRenderer = enemy.GetComponentsInChildren<SpriteRenderer>();
-//        }
-//
-//        var rootEnemies = GameObject.Find("RootEnemies");
-//        var entityRootEnemies = rootEnemies.CreateEntityWithPosition(_ecsWorld);
-//        var moveComponentRoot = _ecsWorld.AddComponent<MoveComponent>(entityRootEnemies);
-//        moveComponentRoot.Transform = rootEnemies.transform;
-//        moveComponentRoot.Direction = Vector3.down;
-//        moveComponentRoot.Speed = GameManager.Instance.SpeedEnemies;
-//        
-//        
-//    }
+        foreach (var enemy in enemies)
+        {
+            var entity = _ecsWorld.game.CreateEntity();
+            entity.AddMove(1, Vector3.zero, enemy.transform);
+            entity.isEnemy = true;
+            entity.AddRenderComponentn(enemy.GetComponentsInChildren<SpriteRenderer>());
+            
+        }
+
+        var rootEnemies = GameObject.Find("RootEnemies");
+        var entityRootEnemies = _ecsWorld.game.CreateEntity();
+        entityRootEnemies.AddMove(GameManager.Instance.SpeedEnemies, Vector3.down, rootEnemies.transform);
 
     }
 
