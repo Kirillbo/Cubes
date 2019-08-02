@@ -57,6 +57,7 @@
         <e p="DesperateDevs" t="Include">
           <e p="Compile.cs" t="Include" />
         </e>
+        <e p="dsf.cs" t="Include" />
         <e p="Entitas" t="Include">
           <e p="Entitas.xml" t="Include" />
           <e p="LICENSE.txt" t="Include" />
@@ -69,8 +70,10 @@
               <e p="GameDeactivateComponent.cs" t="Include" />
               <e p="GameEnemyComponent.cs" t="Include" />
               <e p="GameMoveComponent.cs" t="Include" />
+              <e p="GamePlayerComponent.cs" t="Include" />
               <e p="GamePositionComponent.cs" t="Include" />
               <e p="GameRenderComponentnComponent.cs" t="Include" />
+              <e p="GameRootEnemyComponent.cs" t="Include" />
             </e>
             <e p="GameAttribute.cs" t="Include" />
             <e p="GameComponentsLookup.cs" t="Include" />
@@ -79,6 +82,9 @@
             <e p="GameMatcher.cs" t="Include" />
           </e>
           <e p="Input" t="Include">
+            <e p="Components" t="Include">
+              <e p="InputInputComponent.cs" t="Include" />
+            </e>
             <e p="InputAttribute.cs" t="Include" />
             <e p="InputComponentsLookup.cs" t="Include" />
             <e p="InputContext.cs" t="Include" />
@@ -91,20 +97,23 @@
             <e p="DeactivateComponent.cs" t="Include" />
             <e p="Enemy.cs" t="Include" />
             <e p="EventClickButton.cs" t="Include" />
+            <e p="InputComponent.cs" t="Include" />
             <e p="MoveComponent.cs" t="Include" />
+            <e p="PlayerComponent.cs" t="Include" />
             <e p="PositionComponent.cs" t="Include" />
             <e p="RenderComponentn.cs" t="Include" />
+            <e p="RootEnemyComponent.cs" t="Include" />
           </e>
           <e p="DespawnWall.cs" t="Include" />
           <e p="InitialiseManager.cs" t="Include" />
           <e p="Systems" t="Include">
             <e p="ControllerRespawnEnemies.cs" t="Include" />
             <e p="DespawnEnemySystem.cs" t="Include" />
-            <e p="InitialEnemies.cs" t="Include" />
+            <e p="GlobalMoveSystem.cs" t="Include" />
+            <e p="InitialiseEnemies.cs" t="Include" />
             <e p="InitialPlayer.cs" t="Include" />
             <e p="InputSystem.cs" t="Include" />
-            <e p="MoveSystem.cs" t="Include" />
-            <e p="SpawnEnemySystem.cs" t="Include" />
+            <e p="MoveSystemPlayer.cs" t="Include" />
           </e>
         </e>
         <e p="Test.cs" t="Include" />

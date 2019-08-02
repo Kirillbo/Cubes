@@ -1,26 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 
 
 public class InitialPlayer : IInitializeSystem
 {
-    private Contexts _ecsWorld;
+    private Contexts _contexts;
 
     public InitialPlayer(Contexts contexts)
     {
-        _ecsWorld = contexts;
+        _contexts = contexts;
     }
     
     public void Initialize()
     {
         var player = PoolManager.Instance.Get(PoolType.Player);
-        var entity = _ecsWorld.game.CreateEntity();
-        
-        entity.AddMove(GameManager.Instance.SpeedPlayer, Vector3.zero, player.transform);
-        entity.Retain(player);
+        var entityPlayer = _contexts.game.CreateEntity();
+
+        entityPlayer.isPlayer = true;
+        entityPlayer.AddMove(GameManager.Instance.SpeedPlayer, Vector3.zero, player.transform);
+        entityPlayer.Retain(player);
         player.transform.position = GameManager.Instance.RespawnPos.position;
+        player.Link(entityPlayer);
         player.SetActive(true);
         
     }

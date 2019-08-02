@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 
-public class InputSystem 
+public class InputSystem : IExecuteSystem
 {
 
 //	private EcsFilter<MoveComponent> _moveComponents = null;
@@ -11,7 +12,9 @@ public class InputSystem
 	private Camera _mainCam;
 	
 	private Vector2 _lastPosMouse;
-	
+	private Contexts _context;
+
+
 	public void Initialize()
 	{
 		_mask = GameManager.Instance.Mask;
@@ -75,9 +78,15 @@ public class InputSystem
 	}
 
 
-
-	public void Destroy()
+	public InputSystem(Contexts contexts)
 	{
-		throw new System.NotImplementedException();
+		_context = contexts;
+	}
+
+	public void Execute()
+	{
+		var x = Input.GetAxis("Horizontal");
+		var y = Input.GetAxis("Vertical");
+		_context.input.ReplaceInput(new Vector2(x,y));
 	}
 }

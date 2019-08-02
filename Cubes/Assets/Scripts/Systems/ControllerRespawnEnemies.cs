@@ -1,68 +1,71 @@
 ﻿	using System.Collections;
 	using System.Collections.Generic;
-	
+	using Entitas;
 	using Tools;
 	using UnityEngine;
 	
-	public class ControllerRespawnEnemies 
+	public class ControllerRespawnEnemies : IExecuteSystem, IInitializeSystem
 	{
-		
-//		private EcsWorld _ecsWorld = null;
-//		private EcsFilter<PositionComponent, EnemyComponent, DeactivateComponentttt, MoveComponent> _enemies = null;
+		private Contexts _contexts;
+		private IGroup<GameEntity> _enemiesGroup;
 		
 		private float _actualPosY;
 		private Transform _rootEnemies;
 		private float _offsetSprite;
 		private GameManager _gameManager;
 		private int _curCountActiveBlocks = 0;
-	
+
+		public ControllerRespawnEnemies(Contexts contexts)
+		{
+			_contexts = contexts;
+			_enemiesGroup = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Enemy));
+		}
 		
 		public void Initialize()
 		{
 			_gameManager = GameManager.Instance;
 			_rootEnemies = GameObject.Find("RootEnemies").transform;
-			//_offsetSprite = _enemies.Components3[0].SpriteRenderer[0].sprite.bounds.size.y;
+			_offsetSprite = _enemiesGroup.GetEntities()[0].renderComponentn.SpriteRenderer[0].sprite.bounds.size.y;
+			Debug.Log(_offsetSprite);
 			_actualPosY = _gameManager.StartRespawnCubes.position.y;
 			
 			
+			for (int i = 0; i < _enemiesGroup.count; i++)
+			{
+
+				var entityEnemy = _enemiesGroup.GetEntities()[i];
+				var posComponent = entityEnemy.move.Transform;
+				posComponent.position = CalculateActualPosition();
+				posComponent.SetParent(_rootEnemies);
+
+				var render = entityEnemy.renderComponentn;
+				SetHeartEnemy(render);
+				posComponent.gameObject.SetActive(true);
+				_curCountActiveBlocks++;				
+			}
+			
 		}
 	
 			
-		public void Run()
+		public void Execute()
 		{
-			
-			//RespawnEnemy2();
-			
-	//		for (int i = 0; i < _enemies.EntitiesCount; i++)
-	//		{
-	//			
-	//			var posComponent = _enemies.Components1[i];
-	//			_enemies.Components4[i].Transform.position = CalculateActualPosition();
-	//			_enemies.Components4[i].Transform.SetParent(_rootEnemies);
-	//			_enemies.Components4[i].Transform.gameObject.SetActive(true);
-	//
-	//			SetHeartEnemy(_enemies.Components3[i]);
-	//			
-	//			_ecsWorld.RemoveComponent<DeactivateComponent>(_enemies.Entities[i]);
-	//		}
-			_curCountActiveBlocks++;
+						
+//			for (int i = 0; i < _enemiesGroup.count; i++)
+//			{
+//
+//				var entityEnemy = _enemiesGroup.GetEntities()[i];
+//				var posComponent = entityEnemy.move.Transform;
+//				posComponent.position = CalculateActualPosition();
+//				posComponent.SetParent(_rootEnemies);
+//
+//				var render = entityEnemy.renderComponentn;
+//				SetHeartEnemy(render);
+//				posComponent.gameObject.SetActive(true);
+//				_curCountActiveBlocks++;				
+//			}
 		}
 	
-		
-		
-		
-//		void RespawnEnemy()
-//		{
-//			
-//			var moveComponent = _enemies.Components4[0];
-//			moveComponent.Transform.position = CalculateActualPosition();
-//			moveComponent.Transform.SetParent(_rootEnemies);
-//			moveComponent.Transform.gameObject.SetActive(true);
-//	
-//			//SetHeartEnemy(_enemies.Components3[0]);
-//		//	_ecsWorld.RemoveEntity(_enemies.Entities[0]);
-//		}
-		
+				
 		Vector2 CalculateActualPosition()
 		{
 			if(ToolsRandom.Choice(0.4f))
@@ -94,4 +97,6 @@
 			renders[indexHeart].sprite = _gameManager.SpriteRedEnemy;
 			renders[indexHeart].tag = "HeartEnemy";
 		}
+
+
 	}
