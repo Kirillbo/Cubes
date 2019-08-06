@@ -9,7 +9,7 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
     public bool DynamicPool;
     
-	private Dictionary<int, Pool> _dictGameObject = new Dictionary<int, Pool>();
+	private Dictionary<int, Pool> _dictionaryPools = new Dictionary<int, Pool>();
     private Dictionary<int, IComponent> _dictComponent = new Dictionary<int, IComponent>();
     
     
@@ -21,10 +21,10 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         var newParent = parent ? transform : parent;
         
             
-        if(!_dictGameObject.ContainsKey(IntID))
+        if(!_dictionaryPools.ContainsKey(IntID))
         {
             pool = new Pool(IntID, amount, prefabe, newParent);
-            _dictGameObject.Add(IntID, pool);
+            _dictionaryPools.Add(IntID, pool);
             return pool;
         }
 
@@ -32,69 +32,27 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         return null;
     }
 
+   
     public void DestroyPool(PoolType id)
     {
         int IntID = (int) id;
            
-        if(_dictGameObject.ContainsKey(IntID))
+        if(_dictionaryPools.ContainsKey(IntID))
         {
-            _dictGameObject.Remove(IntID);
+            _dictionaryPools.Remove(IntID);
             return;
         }
 
         Debug.Log(id + " pool already exist");
     }
-    
-//    public T AddComponent<T>() where T : IComponent,  new()
-//    {
-//        var key = typeof(T).GetHashCode();
-//        
-//        if (!_dictComponent.ContainsKey(key))
-//        {
-//            var needObj = new T();
-//            _dictComponent.Add(key, needObj);
-//            return needObj;
-//        }
-//        
-//        Debug.Log(typeof(T) + " this component is Update");
-//        
-//        var obj = new T();
-//        _dictComponent.Remove(key);
-//        _dictComponent.Add(key, obj);
-//        return obj;
-//    }
-
-
-//    public IComponent AddComponent(IComponent component)
-//    {
-//        var key = component.GetType().GetHashCode();
-//        
-//        if (!_dictComponent.ContainsKey(key))
-//        {
-//            _dictComponent.Add(key, component);
-//            return component;
-//        }
-//        
-//        Debug.Log(component.GetType() + " this component is registered");
-//        return _dictComponent[key];
-//
-//    }
-    
-//    public void AddComponent(object component)
-//    {
-//        var scriptable = component as ScriptableObject;
-//        if (scriptable != null) Object.Instantiate(scriptable);
-//        
-//    }
-
-    
+        
     
     //Get gameObject
     public GameObject Get(PoolType id)
     {
         Pool pool;
         
-        if(_dictGameObject.TryGetValue((int)id, out  pool))
+        if(_dictionaryPools.TryGetValue((int)id, out  pool))
         {
             return pool.Get();
         }
@@ -105,41 +63,17 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
  
     
-//    public void RemoveComponent<T>()
-//    {
-//        var key = typeof(T).GetHashCode();
-//        if (_dictComponent.ContainsKey(key))
-//        {
-//            _dictComponent.Remove(key);
-//        }
-//    } 
-    
-    //Get components
-    public T Get<T>() where T : class, IComponent
-    {
-        var key = typeof(T).GetHashCode();
-        IComponent needComponent;
-
-        if (_dictComponent.TryGetValue(key, out needComponent))
-        {
-            return needComponent as T;
-        }
-        
-        Debug.LogFormat("Component {0} is not find", typeof(T));
-        return null;
-    }
-    
     public bool IsContaince(PoolType id, GameObject obj)
     {
-        return _dictGameObject[(int) id].Contains(obj);
+        return _dictionaryPools[(int) id].Contains(obj);
     }
 
 
     public Queue<GameObject> GetStack(PoolType id)
     {
-        if (_dictGameObject.ContainsKey((int) id))
+        if (_dictionaryPools.ContainsKey((int) id))
         {
-            return _dictGameObject[(int) id].GetCollection();
+            return _dictionaryPools[(int) id].GetCollection();
         }
 
         Debug.Log("Pool is not exist");
@@ -148,19 +82,18 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
     public GameObject[] ReSpawn(PoolType id, int count)
     {
-
         GameObject[] obj = new GameObject[count];
         
         for (int i = 0; i < count; i++)
         {
-            obj[i] = _dictGameObject[(int) id].ReSpawn();
+            obj[i] = _dictionaryPools[(int) id].ReSpawn();
             if (obj[i] == null)
             {
                 Debug.LogFormat("Pool {0} is empty.", id);
 
                 if (DynamicPool)
                 {
-                    obj[i] = Instantiate(_dictGameObject[(int) id].OriginalPrefabe());
+                    obj[i] = Instantiate(_dictionaryPools[(int) id].GetOriginalPrefabe());
                     IPoollable IPoollabl = obj[i].GetComponent<IPoollable>();
                     if(IPoollabl != null) IPoollabl.Init();
 
@@ -178,14 +111,14 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
     public GameObject ReSpawn(PoolType id)
     {
-        var obj = _dictGameObject[(int) id].ReSpawn();
+        var obj = _dictionaryPools[(int) id].ReSpawn();
         if (obj == null)
         {
             Debug.LogFormat("Pool {0} is empty.", id);
 
             if (DynamicPool)
             {
-                obj = Instantiate(_dictGameObject[(int) id].OriginalPrefabe());
+                obj = Instantiate(_dictionaryPools[(int) id].GetOriginalPrefabe());
                 IPoollable IPoollabl = obj.GetComponent<IPoollable>();
                 if(IPoollabl != null) IPoollabl.Init();
 
@@ -201,28 +134,11 @@ public class PoolManager : SingltoonBehavior<PoolManager>
 
 
 
-#if UNITY_EDITOR
-//    public string[] ListPool;
-//    
-//    void Update()
-//    {
-//                
-//        for (int i = 0; i < _pools.Count; i++)
-//        {
-//            var key  = _pools.ElementAt(i).Key;
-//            var namePool = Enum.GetName(typeof(PoolType), i);
-//            var countElementInPool = _pools[i].GetStack().Count;
-//            ListPool[i] = String.Concat(namePool, " ", countElementInPool);
-//        }
-//    }
-#endif
- 
-
     public void DeSpawn(PoolType id, GameObject obj, bool commonTransform = true, bool setActive = false)
     {
         Pool pool;
 
-        if(_dictGameObject.TryGetValue((int)id, out pool))
+        if(_dictionaryPools.TryGetValue((int)id, out pool))
         {
             pool.AddObject(obj, commonTransform);
 
@@ -236,45 +152,27 @@ public class PoolManager : SingltoonBehavior<PoolManager>
     }
 
 
+    public void AddObjects(PoolType id, GameObject[] objects)
+    {
+        Pool pool;
 
-//    /// <summary>
-//    /// добавить объект к уже существующему пулу
-//    /// </summary>
-//    /// <param name="id"></param>
-//    /// <param name=""></param>
-//    public void Add(PoolType id, GameObject prefab, int count = 1, Transform parent = null)
-//    {
-//        Pool pool = null;
-//
-//        if (_dictGameObject.TryGetValue((int) id, out pool))
-//        {
-//            for (int i = 0; i < count; i++)
-//            {
-//                var obj = Instantiate(prefab, transform);
-//                obj.SetActive(false);
-//                IPoollable ipoolable = obj.GetComponent<IPoollable>();
-//                if(ipoolable != null) ipoolable.Init();
-//                
-//                pool.AddObject(obj, true);
-//            }
-//        }
-//
-//        else Debug.Log("Pool is not find");
-//    }
-    
-    
-    
-    
-    /// <summary>
-    /// добавить объект к уже существующему пулу
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name=""></param>
-    public void Add(PoolType id, GameObject obj)
+        if (_dictionaryPools.TryGetValue((int) id, out pool))
+        {                
+            pool.AddObjects(objects, true);
+            foreach (var obj in objects)
+            {
+                IPoollable iPoollable = obj.GetComponent<IPoollable>();
+                if(iPoollable != null) iPoollable.Init();   
+            }
+        }
+        else Debug.Log("Pool is not find");
+    }
+  
+    public void AddObject(PoolType id, GameObject obj)
     {
         Pool pool = null;
 
-        if (_dictGameObject.TryGetValue((int) id, out pool))
+        if (_dictionaryPools.TryGetValue((int) id, out pool))
         {                
              pool.AddObject(obj, true);
             IPoollable iPoollable = obj.GetComponent<IPoollable>();
@@ -288,7 +186,7 @@ public class PoolManager : SingltoonBehavior<PoolManager>
     public void MixObject(PoolType id)
     {
         Pool pool;
-        if (_dictGameObject.TryGetValue((int) id, out pool))
+        if (_dictionaryPools.TryGetValue((int) id, out pool))
         {
             var arr = GetStack(id).ToArray();
             GetStack(id).Clear();
@@ -298,18 +196,15 @@ public class PoolManager : SingltoonBehavior<PoolManager>
         }
         else Debug.Log(id + " pool not exist");
     }
-
-
 }
 
 
 
 public enum PoolType
 {
-   Player,
-   Enemies,
-   SmallEnemy,
-   MediumEnemy,
-   BigEnemy
-    
+   Pike,
+   Enemy,
+   Enemy1,
+   Enemy2,
+   Enemy3
 }

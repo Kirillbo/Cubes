@@ -8,18 +8,26 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Deactivate = 0;
-    public const int Enemy = 1;
-    public const int Move = 2;
-    public const int Player = 3;
-    public const int Position = 4;
-    public const int RenderComponentn = 5;
-    public const int RootEnemy = 6;
+    public const int Active = 0;
+    public const int Collider = 1;
+    public const int Deactivate = 2;
+    public const int Destroy = 3;
+    public const int DestroyListener = 4;
+    public const int Enemy = 5;
+    public const int Move = 6;
+    public const int Player = 7;
+    public const int Position = 8;
+    public const int RenderComponentn = 9;
+    public const int RootEnemy = 10;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
+        "Active",
+        "Collider",
         "Deactivate",
+        "Destroy",
+        "DestroyListener",
         "Enemy",
         "Move",
         "Player",
@@ -29,7 +37,11 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ActiveComponent),
+        typeof(ColliderComponent),
         typeof(DeactivateComponent),
+        typeof(DestroyComponent),
+        typeof(DestroyListenerComponent),
         typeof(EnemyComponent),
         typeof(MoveComponent),
         typeof(PlayerComponent),

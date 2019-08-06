@@ -6,6 +6,11 @@ public class DespawnWall : MonoBehaviour {
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		PoolManager.Instance.DeSpawn(PoolType.Enemies, other.gameObject);
+		if (other.CompareTag("Enemy"))
+		{
+			var entity = Contexts.sharedInstance.game.CreateEntity();
+			entity.AddCollider(gameObject.transform, other.transform, false);
+		}
+		
 	}
 }

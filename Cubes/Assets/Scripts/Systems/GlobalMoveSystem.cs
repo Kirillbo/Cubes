@@ -21,7 +21,7 @@ public class GlobalMoveSystem : IExecuteSystem
 		{
 			var moveComponent = entity.move;
 			var positionComponent = entity.position.Position;
-			moveComponent.Transform.position = new Vector3(positionComponent.x, positionComponent.y);
+			moveComponent.Transform.localPosition = new Vector3(positionComponent.x, positionComponent.y);
 		}
 	}
 }

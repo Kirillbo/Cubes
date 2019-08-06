@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public class DeactivateComponent : IComponent
-{
-    
+public class DeactivateComponent : IComponent {
+
 }

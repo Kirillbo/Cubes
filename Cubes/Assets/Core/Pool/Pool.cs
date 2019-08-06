@@ -16,7 +16,6 @@ public class Pool
     private int _idPool;
 
         
-    //Pool for object on Scene
     public Pool(int id, int amount, Object prefabe, Transform parent = null)
     {
         _cashedStack = new Queue<GameObject>();
@@ -40,7 +39,6 @@ public class Pool
         }
     }
 
-
     public bool Contains(GameObject obj)
     {
         return _cashedStack.Contains(obj);
@@ -52,11 +50,21 @@ public class Pool
         return _cashedStack;
     }
 
+    public void AddObjects(GameObject[] obj, bool commonTransform)
+    {
+        foreach (var gameObject in obj)
+        {
+            _cashedStack.Enqueue(gameObject);
+            if (commonTransform)
+            {
+                gameObject.transform.SetParent(CommonTransform);
+            }
+        }
+    }
 
     public void AddObject(GameObject obj, bool commonTransform)
     {
         _cashedStack.Enqueue(obj);
-
         if (commonTransform)
         {
             obj.transform.SetParent(CommonTransform);
@@ -67,11 +75,11 @@ public class Pool
     {
         if (_cashedStack.Count < 1)
         {
-            Debug.LogFormat("Stack {0} empty.", _idPool);
+            Debug.LogFormat("Pool {0} is empty.", _idPool);
             return null;
         }
         
-        GameObject b = (GameObject)_cashedStack.Peek();
+        GameObject b = _cashedStack.Peek();
         return b;
     }
 
@@ -87,7 +95,7 @@ public class Pool
     }
 
     
-    public GameObject OriginalPrefabe()
+    public GameObject GetOriginalPrefabe()
     {
         return (GameObject)_originalObj;
     }

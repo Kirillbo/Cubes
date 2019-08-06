@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
 using UnityEngine;
@@ -16,10 +15,10 @@ public class InitialiseEnemies : IInitializeSystem
 	private int _curCountActiveBlocks = 0;
 	private int _startCountEnemy;
 	
-	public InitialiseEnemies(Contexts contexts, int countEnemy)
+	public InitialiseEnemies(Contexts contexts)
 	{
 		_contexts = contexts;
-		_startCountEnemy = countEnemy;
+//		_startCountEnemy = countEnemy;
 	}
 
 	public void Initialize()
@@ -27,25 +26,23 @@ public class InitialiseEnemies : IInitializeSystem
 		_gameManager = GameManager.Instance;
 		_rootEnemies = GameObject.Find("RootEnemies").transform;
 
-		var enemies = new List<GameObject>();
-		enemies.AddRange(PoolManager.Instance.ReSpawn(PoolType.SmallEnemy, 15));
-		enemies.AddRange(PoolManager.Instance.ReSpawn(PoolType.MediumEnemy, 7));
-		enemies.AddRange(PoolManager.Instance.ReSpawn(PoolType.BigEnemy, 5));
-
-		foreach (var enemy in enemies)
+		var allEnemies = PoolManager.Instance.GetStack(PoolType.Enemy);
+		foreach (var enemy in allEnemies)
 		{
 			var entity = _contexts.game.CreateEntity();
-			entity.isEnemy = true;
-			entity.AddMove(1, Vector3.zero, enemy.transform);
+			entity.AddMove(1, enemy.transform);
 			entity.AddRenderComponentn(enemy.GetComponentsInChildren<SpriteRenderer>());
 			entity.AddPosition(Vector2.zero);
+			entity.isDeactivate = true;
+			var countBlock = enemy.GetComponentsInChildren<SpriteRenderer>();
+			entity.AddEnemy(countBlock.Length);
 			enemy.Link(entity);
-
 		}
 
 		var entityRootEnemies = _contexts.game.CreateEntity();
 		entityRootEnemies.isRootEnemy = true;
-		entityRootEnemies.AddMove(GameManager.Instance.SpeedEnemies, Vector3.down, _rootEnemies.transform);
+		entityRootEnemies.AddMove(GameManager.Instance.SpeedEnemies, _rootEnemies.transform);
+		entityRootEnemies.AddPosition(Vector2.zero);
 		_rootEnemies.gameObject.Link(entityRootEnemies);
 	}
 	

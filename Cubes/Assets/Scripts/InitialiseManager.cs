@@ -10,13 +10,31 @@ public class InitialiseManager : MonoBehaviour
 	public GameObject MeduimEnemyPrefab;
 	public GameObject BigEnemyPrefab;
 
+	public GameObject[] allEnemyPrefabs;
+	
 	public void CreateAllPools ()
 	{
-	    PoolManager.Instance.CreatePool(PoolType.Player, 1, PlayerPrefab);
-		PoolManager.Instance.CreatePool(PoolType.SmallEnemy, 15, SmallEnemyPrefab);
-		PoolManager.Instance.CreatePool(PoolType.MediumEnemy, 11, MeduimEnemyPrefab);
-		PoolManager.Instance.CreatePool(PoolType.BigEnemy, 7, BigEnemyPrefab);
+	    PoolManager.Instance.CreatePool(PoolType.Pike, 1, PlayerPrefab);
+		PoolManager.Instance.CreatePool(PoolType.Enemy, 1, allEnemyPrefabs[0]);
+		
+		foreach (var element in allEnemyPrefabs)
+		{
+			var objects = InstanceArray(element, 10);
+			PoolManager.Instance.AddObjects(PoolType.Enemy, objects);
+		}
+		
+		PoolManager.Instance.MixObject(PoolType.Enemy);
+	}
 
+	GameObject[] InstanceArray(GameObject element, int countElement)
+	{
+		GameObject[] arr = new GameObject[countElement];
+		for (int i = 0; i < countElement; i++)
+		{
+			arr[i] = Instantiate(element);
+			arr[i].SetActive(false);
+		}
+		return arr;
 	}
 	
 }

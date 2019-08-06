@@ -64,10 +64,26 @@
         </e>
         <e p="Generated" t="Include">
           <e p="Contexts.cs" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Components" t="Include">
+              <e p="DestroyListenerComponent.cs" t="Include" />
+            </e>
+            <e p="GameEventSystems.cs" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="IDestroyListener.cs" t="Include" />
+            </e>
+            <e p="Systems" t="Include">
+              <e p="DestroyEventSystem.cs" t="Include" />
+            </e>
+          </e>
           <e p="Feature.cs" t="Include" />
           <e p="Game" t="Include">
             <e p="Components" t="Include">
+              <e p="GameActiveComponent.cs" t="Include" />
+              <e p="GameColliderComponent.cs" t="Include" />
               <e p="GameDeactivateComponent.cs" t="Include" />
+              <e p="GameDestroyComponent.cs" t="Include" />
+              <e p="GameDestroyListenerComponent.cs" t="Include" />
               <e p="GameEnemyComponent.cs" t="Include" />
               <e p="GameMoveComponent.cs" t="Include" />
               <e p="GamePlayerComponent.cs" t="Include" />
@@ -94,7 +110,10 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Componentns" t="Include">
+            <e p="ActiveComponent.cs" t="Include" />
+            <e p="ColliderComponent.cs" t="Include" />
             <e p="DeactivateComponent.cs" t="Include" />
+            <e p="DestroyComponent.cs" t="Include" />
             <e p="Enemy.cs" t="Include" />
             <e p="EventClickButton.cs" t="Include" />
             <e p="InputComponent.cs" t="Include" />
@@ -107,14 +126,19 @@
           <e p="DespawnWall.cs" t="Include" />
           <e p="InitialiseManager.cs" t="Include" />
           <e p="Systems" t="Include">
+            <e p="ActivateObjectSystem.cs" t="Include" />
             <e p="ControllerRespawnEnemies.cs" t="Include" />
+            <e p="DeactivateObjectSystem.cs" t="Include" />
             <e p="DespawnEnemySystem.cs" t="Include" />
             <e p="GlobalMoveSystem.cs" t="Include" />
             <e p="InitialiseEnemies.cs" t="Include" />
             <e p="InitialPlayer.cs" t="Include" />
             <e p="InputSystem.cs" t="Include" />
+            <e p="MoveRootEnemySystem.cs" t="Include" />
             <e p="MoveSystemPlayer.cs" t="Include" />
+            <e p="TriggerCollisionSystem.cs" t="Include" />
           </e>
+          <e p="TriggerEventCommander.cs" t="Include" />
         </e>
         <e p="Test.cs" t="Include" />
       </e>

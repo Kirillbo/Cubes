@@ -149,7 +149,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859795629}
-  - component: {fileID: 859795630}
   m_Layer: 0
   m_Name: RootEnemies
   m_TagString: Untagged
@@ -170,17 +169,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859795630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 859795628}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d47be2ce80fdb4491a1987b496b72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &879844437
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +205,12 @@ MonoBehaviour:
     type: 2}
   BigEnemyPrefab: {fileID: 1642711312528952, guid: b76f7040cb9a91c49b593cdcaaefc360,
     type: 2}
+  allEnemyPrefabs:
+  - {fileID: 1103817505461588, guid: 22c283712967047498c169fd2f7952dc, type: 2}
+  - {fileID: 1140403824093832, guid: 1d1d949852ea3d74aa5e04ad3e2191ef, type: 2}
+  - {fileID: 1163317156521400, guid: beee73d7c4ae66d41b01ee3ae92f7804, type: 2}
+  - {fileID: 1937251240631930, guid: 94868953b1e3d8c47ae88fa22f0a73ad, type: 2}
+  - {fileID: 1471142125483340, guid: ef16e4a3e3ec82041a13b4e642caa1e9, type: 2}
 --- !u!114 &879844439
 MonoBehaviour:
   m_ObjectHideFlags: 0

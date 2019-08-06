@@ -1,11 +1,12 @@
 ﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 
     public class MoveComponent : IComponent
     {
         public float Speed;
-        public Vector3 Direction;
+        [EntityIndex]
         public Transform Transform;
     }
 
