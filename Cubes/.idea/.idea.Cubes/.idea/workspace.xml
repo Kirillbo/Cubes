@@ -2,45 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9e61de2-3c47-4dd0-a571-d2e369d63191" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cubes/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cubes/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cubes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cubes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Pool/Pool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Pool/Pool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/Pool/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/Pool/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Core/States/GameProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Core/States/GameProcess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Generated/Contexts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Generated/Contexts.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Generated/Game/Components/GameEnemyComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Generated/Game/Components/GameEnemyComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Generated/Game/Components/GameMoveComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Generated/Game/Components/GameMoveComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Generated/Game/GameComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Generated/Game/GameComponentsLookup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy (1).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy (1).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy (2).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy (2).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Componentns/DeactivateComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Componentns/DeactivateComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Componentns/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Componentns/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Componentns/MoveComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Componentns/MoveComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DespawnWall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DespawnWall.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitialiseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitialiseManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/GlobalMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/GlobalMoveSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/InitialPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/InitialPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/InitialiseEnemies.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/InitialiseEnemies.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/InputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/InputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/1d/1d74e4c5bc0ef4a4783506bdc9f13780" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/1d/1d74e4c5bc0ef4a4783506bdc9f13780" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/37/37680684ee191dd4086ac67192f053d9" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/37/37680684ee191dd4086ac67192f053d9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/d8/d83abf8b57253e14898bc6486724a7d4" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/d8/d83abf8b57253e14898bc6486724a7d4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +18,7 @@
     <session id="-1567903086">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="4" />
@@ -84,12 +50,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="12510" />
+          <entry key="cs" value="12514" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="12510" />
+          <entry key="C#" value="12514" />
         </counts>
       </usages-collector>
     </session>
@@ -197,11 +163,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/TriggerCollisionSystem.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="32" column="100" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
+            <state relative-caret-position="491">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <marker date="1565119422948" expanded="false" signature="6:114" ph="..." />
                 <marker date="1565119422948" expanded="true" signature="180:919" ph="{...}" />
@@ -249,22 +215,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="176">
+              <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
               <folding>
-                <marker date="1565113207059" expanded="false" signature="7:111" ph="..." />
-                <marker date="1565113207059" expanded="true" signature="188:2461" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="566:857" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="887:1165" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="1195:1388" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="1411:1773" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="1814:2061" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="1896:1940" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="2120:2457" ph="{...}" />
-                <marker date="1565113207059" expanded="true" signature="2208:2294" ph="{...}" />
+                <marker date="1565166200187" expanded="false" signature="7:111" ph="..." />
+                <marker date="1565166200187" expanded="true" signature="188:2465" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="566:857" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="887:1165" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="1195:1392" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="1203:1307" ph="/* Debug.Log(&quot;ALL Enemy &quot; +_enemiesGroup.count); ... */" />
+                <marker date="1565166200187" expanded="true" signature="1415:1777" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="1818:2065" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="1900:1944" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="2124:2461" ph="{...}" />
+                <marker date="1565166200187" expanded="true" signature="2212:2298" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -405,13 +372,13 @@
         <option value="$PROJECT_DIR$/Assets/Core/States/GameProcess.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Componentns/DeactivateComponent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Systems/ActivateObjectSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Systems/InitialiseEnemies.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Componentns/ColliderComponent.cs" />
         <option value="$PROJECT_DIR$/Assets/Generated/Game/Components/GameColliderComponent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DespawnWall.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Systems/DeactivateObjectSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Systems/TriggerCollisionSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs" />
       </list>
     </option>
   </component>
@@ -514,12 +481,12 @@
       <workItem from="1564777443542" duration="4884000" />
       <workItem from="1564861474925" duration="4854000" />
       <workItem from="1564918605680" duration="3363000" />
-      <workItem from="1565008017529" duration="25776000" />
+      <workItem from="1565008017529" duration="26951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119971000" />
+    <option name="totallyTimeSpent" value="121146000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1080,25 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <marker date="1565113207059" expanded="false" signature="7:111" ph="..." />
-            <marker date="1565113207059" expanded="true" signature="188:2461" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="566:857" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="887:1165" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="1195:1388" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="1411:1773" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="1814:2061" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="1896:1940" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="2120:2457" ph="{...}" />
-            <marker date="1565113207059" expanded="true" signature="2208:2294" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/DeactivateObjectSystem.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1178,8 +1126,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/TriggerCollisionSystem.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="32" column="100" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
+        <state relative-caret-position="491">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <marker date="1565119422948" expanded="false" signature="6:114" ph="..." />
             <marker date="1565119422948" expanded="true" signature="180:919" ph="{...}" />
@@ -1189,6 +1137,26 @@
             <marker date="1565119422948" expanded="true" signature="612:917" ph="{...}" />
             <marker date="1565119422948" expanded="true" signature="645:914" ph="{...}" />
             <marker date="1565119422948" expanded="true" signature="808:823" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Systems/ControllerRespawnEnemies.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <folding>
+            <marker date="1565166200187" expanded="false" signature="7:111" ph="..." />
+            <marker date="1565166200187" expanded="true" signature="188:2465" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="566:857" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="887:1165" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="1195:1392" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="1203:1307" ph="/* Debug.Log(&quot;ALL Enemy &quot; +_enemiesGroup.count); ... */" />
+            <marker date="1565166200187" expanded="true" signature="1415:1777" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="1818:2065" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="1900:1944" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="2124:2461" ph="{...}" />
+            <marker date="1565166200187" expanded="true" signature="2212:2298" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -35,8 +35,8 @@
 			
 		public void Execute()
 		{
-			Debug.Log("ALL Enemy " +_enemiesGroup.count);
-			Debug.Log("ACTIVE ENEMY " + _enemiesOnScene.count);
+			//Debug.Log("ALL Enemy " +_enemiesGroup.count);
+			//Debug.Log("ACTIVE ENEMY " + _enemiesOnScene.count);
 			if(_enemiesOnScene.count > _curCountActiveBlocks) return;
 
 			RespawnEnemy();
