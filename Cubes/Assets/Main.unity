@@ -502,7 +502,7 @@ MonoBehaviour:
   - {fileID: 1380853887}
   Pool: {fileID: 0}
   SpeedPlayer: 8
-  SpeedEnemies: 2
+  SpeedEnemies: 10
   SpriteRedEnemy: {fileID: 21300000, guid: 141f0313ad8dc6240aa875b188109084, type: 3}
   SpriteBlueEnemy: {fileID: 21300000, guid: 589527d78549eb6419c6a443b6ef1894, type: 3}
   Mask:

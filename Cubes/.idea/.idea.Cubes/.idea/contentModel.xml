@@ -57,7 +57,6 @@
         <e p="DesperateDevs" t="Include">
           <e p="Compile.cs" t="Include" />
         </e>
-        <e p="dsf.cs" t="Include" />
         <e p="Entitas" t="Include">
           <e p="Entitas.xml" t="Include" />
           <e p="LICENSE.txt" t="Include" />
@@ -140,7 +139,6 @@
           </e>
           <e p="TriggerEventCommander.cs" t="Include" />
         </e>
-        <e p="Test.cs" t="Include" />
       </e>
       <e p="Cubes.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

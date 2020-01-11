@@ -11,21 +11,23 @@ public partial class GameEntity {
     public ColliderComponent collider { get { return (ColliderComponent)GetComponent(GameComponentsLookup.Collider); } }
     public bool hasCollider { get { return HasComponent(GameComponentsLookup.Collider); } }
 
-    public void AddCollider(UnityEngine.Transform newSourceObject, UnityEngine.Transform newSecondObject, bool newDamageHeart) {
+    public void AddCollider(UnityEngine.Transform newSourceObject, UnityEngine.Transform newSecondObject, bool newDamageHeart, Entitas.Entity newSecondEntity) {
         var index = GameComponentsLookup.Collider;
         var component = (ColliderComponent)CreateComponent(index, typeof(ColliderComponent));
         component.SourceObject = newSourceObject;
         component.SecondObject = newSecondObject;
         component.DamageHeart = newDamageHeart;
+        component.SecondEntity = newSecondEntity;
         AddComponent(index, component);
     }
 
-    public void ReplaceCollider(UnityEngine.Transform newSourceObject, UnityEngine.Transform newSecondObject, bool newDamageHeart) {
+    public void ReplaceCollider(UnityEngine.Transform newSourceObject, UnityEngine.Transform newSecondObject, bool newDamageHeart, Entitas.Entity newSecondEntity) {
         var index = GameComponentsLookup.Collider;
         var component = (ColliderComponent)CreateComponent(index, typeof(ColliderComponent));
         component.SourceObject = newSourceObject;
         component.SecondObject = newSecondObject;
         component.DamageHeart = newDamageHeart;
+        component.SecondEntity = newSecondEntity;
         ReplaceComponent(index, component);
     }
 
